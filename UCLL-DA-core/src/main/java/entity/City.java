@@ -1,7 +1,7 @@
-package entity.rest;
+package entity;
 
 /**
  * Created by Krivi on 27/09/2016.
  */
-public class Forecast{
+public class City{
 }
