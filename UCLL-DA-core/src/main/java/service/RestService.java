@@ -1,6 +1,6 @@
 package service;
 
-import config.Config;
+import config.ConfigExample;
 import entity.rest.Response;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -18,7 +18,7 @@ public class RestService{
         RestTemplate template = new RestTemplate();
 
         try{
-            Response response = template.getForObject( OWM_API_URL, Response.class, Config.OWM_API_VERSION, Config.OWM_API_KEY, location );
+            Response response = template.getForObject( OWM_API_URL, Response.class, ConfigExample.OWM_API_VERSION, ConfigExample.OWM_API_KEY, location );
 
             System.out.println( "cool" );
         }catch( RestClientException e ){
