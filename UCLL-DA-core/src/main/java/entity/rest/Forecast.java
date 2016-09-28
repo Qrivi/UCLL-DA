@@ -1,5 +1,7 @@
 package entity.rest;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.time.LocalDate;
 
 /**

@@ -1,5 +1,7 @@
 package entity.rest;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 /**
  * Created by Krivi on 27/09/2016.
  */
