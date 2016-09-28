@@ -11,6 +11,7 @@ public class Temperature{
     private double max;
     private double night;
     private double eve;
+    private double morn;
 
     public Temperature(){
     }
@@ -62,7 +63,5 @@ public class Temperature{
     public void setMorn( double morn ){
         this.morn = morn;
     }
-
-    private double morn;
 
 }

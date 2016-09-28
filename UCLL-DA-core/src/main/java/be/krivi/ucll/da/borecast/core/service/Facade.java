@@ -17,19 +17,19 @@ public class Facade{
         repository = new CityRepository();
     }
 
-    public Set<String> getCities() {
+    public Set<String> getCities(){
         return repository.getCities();
     }
 
     public void addCity( City city ){
-        repository.addCity(city);
+        repository.addCity( city );
     }
 
-    public City getCity(String name) {
+    public City getCity( String name ){
         return repository.getCity( name );
     }
 
-    public void deleteCity(String name) {
+    public void deleteCity( String name ){
         repository.deleteCity( name );
     }
 }

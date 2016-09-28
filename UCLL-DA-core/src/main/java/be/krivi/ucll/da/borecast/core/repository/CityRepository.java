@@ -13,6 +13,7 @@ import java.util.Set;
 public class CityRepository{
 
     private Map<String, City> cities;
+
     /*
         TODO REMOVE ME!
         Waarom MAP you ask?
@@ -25,22 +26,22 @@ public class CityRepository{
         this.cities = new HashMap<>();
     }
 
-    public Set<String> getCities() {
+    public Set<String> getCities(){
         return cities.keySet();
     }
 
     public void addCity( City city ){
-        if(cities.containsKey( city.getName() ))
+        if( cities.containsKey( city.getName() ) )
             cities.replace( city.getName(), city );
         else
             cities.put( city.getName(), city );
     }
 
-    public City getCity(String name) {
+    public City getCity( String name ){
         return cities.get( name );
     }
 
-    public void deleteCity(String name) {
-        cities.remove(name);
+    public void deleteCity( String name ){
+        cities.remove( name );
     }
 }
