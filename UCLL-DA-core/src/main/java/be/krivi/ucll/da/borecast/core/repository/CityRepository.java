@@ -1,6 +1,6 @@
-package repository;
+package be.krivi.ucll.da.borecast.core.repository;
 
-import entity.City;
+import be.krivi.ucll.da.borecast.core.entity.City;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,7 @@
-package entity;
+package be.krivi.ucll.da.borecast.core.entity;
+
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Created by Krivi on 27/09/2016.
@@ -6,12 +9,14 @@ package entity;
 
 public class City{
 
-    public String name;
-    public String country;
-    public double lat;
-    public double lon;
+    private String name;
+    private String country;
+    private double lat;
+    private double lon;
+    private List<Forecast> forecastList;
 
     public City(){
+        forecastList = new LinkedList<>();
     }
 
     public String getName(){

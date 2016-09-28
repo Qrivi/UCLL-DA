@@ -1,4 +1,4 @@
-package entity.rest;
+package be.krivi.ucll.da.borecast.core.entity.rest;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
@@ -20,6 +20,7 @@ public class Forecast{
     public double deg;
     public double clouds;
     public double snow;
+    public double rain;
 
     public Forecast(){
     }
@@ -94,5 +95,13 @@ public class Forecast{
 
     public void setSnow( double snow ){
         this.snow = snow;
+    }
+
+    public double getRain(){
+        return rain;
+    }
+
+    public void setRain( double rain ){
+        this.rain = rain;
     }
 }

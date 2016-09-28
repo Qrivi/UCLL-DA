@@ -1,22 +1,18 @@
-package entity.rest;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+package be.krivi.ucll.da.borecast.core.entity;
 
 /**
- * Created by Krivi on 22/09/2016.
+ * Created by Jan on 28/09/2016.
  */
 
-@JsonIgnoreProperties( ignoreUnknown = true )
-public class Temp{
+public class Temperature{
 
-    public double day;
-    public double min;
-    public double max;
-    public double night;
-    public double eve;
-    public double morn;
+    private double day;
+    private double min;
+    private double max;
+    private double night;
+    private double eve;
 
-    public Temp(){
+    public Temperature(){
     }
 
     public double getDay(){
@@ -66,4 +62,7 @@ public class Temp{
     public void setMorn( double morn ){
         this.morn = morn;
     }
+
+    private double morn;
+
 }

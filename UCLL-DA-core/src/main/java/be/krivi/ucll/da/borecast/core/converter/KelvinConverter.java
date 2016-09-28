@@ -1,4 +1,4 @@
-package converter;
+package be.krivi.ucll.da.borecast.core.converter;
 
 /**
  * Created by Krivi on 27/09/2016.
