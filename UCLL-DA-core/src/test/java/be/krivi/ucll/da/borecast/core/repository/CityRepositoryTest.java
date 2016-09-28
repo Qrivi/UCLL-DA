@@ -1,4 +1,4 @@
-package repository;
+package be.krivi.ucll.da.borecast.core.repository;
 
 import be.krivi.ucll.da.borecast.core.entity.City;
 import be.krivi.ucll.da.borecast.core.service.Facade;
@@ -35,7 +35,7 @@ public class CityRepositoryTest{
         facade.addCity( cityLeuven );
         facade.addCity( cityGenk );
 
-        assertEquals( 2, facade.getCities().size());
+        assertEquals( 2, facade.getCities().size() );
     }
 
 
@@ -51,6 +51,6 @@ public class CityRepositoryTest{
         facade.addCity( cityLeuven );
         facade.deleteCity( cityLeuven.getName() );
 
-        assertEquals( 0, facade.getCities().size());
+        assertEquals( 0, facade.getCities().size() );
     }
 }

@@ -1,7 +1,7 @@
 package be.krivi.ucll.da.borecast.core.service;
 
-import be.krivi.ucll.da.borecast.core.config.Config;
 import be.krivi.ucll.da.borecast.core.entity.rest.Response;
+import config.Config;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
