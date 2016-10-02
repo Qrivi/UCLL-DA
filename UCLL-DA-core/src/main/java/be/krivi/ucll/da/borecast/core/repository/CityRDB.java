@@ -1,7 +1,7 @@
 package be.krivi.ucll.da.borecast.core.repository;
 
 import be.krivi.ucll.da.borecast.core.common.CRUDJPADatabase;
-import be.krivi.ucll.da.borecast.core.entity.City;
+import be.krivi.ucll.da.borecast.core.model.City;
 import be.krivi.ucll.da.borecast.core.exception.DatabaseException;
 
 import javax.persistence.EntityManager;

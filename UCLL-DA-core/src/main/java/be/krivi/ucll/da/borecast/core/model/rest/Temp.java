@@ -1,4 +1,4 @@
-package be.krivi.ucll.da.borecast.core.entity.rest;
+package be.krivi.ucll.da.borecast.core.model.rest;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 

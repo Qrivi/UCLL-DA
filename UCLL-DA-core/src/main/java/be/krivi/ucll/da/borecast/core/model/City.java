@@ -1,4 +1,4 @@
-package be.krivi.ucll.da.borecast.core.entity;
+package be.krivi.ucll.da.borecast.core.model;
 
 import be.krivi.ucll.da.borecast.core.common.Identifiable;
 

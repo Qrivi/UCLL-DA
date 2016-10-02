@@ -1,6 +1,6 @@
 package be.krivi.ucll.da.borecast.core.repository;
 
-import be.krivi.ucll.da.borecast.core.entity.City;
+import be.krivi.ucll.da.borecast.core.model.City;
 import be.krivi.ucll.da.borecast.core.exception.DatabaseException;
 import be.krivi.ucll.da.borecast.core.repository.map.CRUDMapDB;
 

@@ -1,4 +1,4 @@
-package be.krivi.ucll.da.borecast.core.entity;
+package be.krivi.ucll.da.borecast.core.model;
 
 /**
  * Created by Jan on 28/09/2016.

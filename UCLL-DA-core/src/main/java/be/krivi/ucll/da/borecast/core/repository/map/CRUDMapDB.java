@@ -26,7 +26,7 @@ public abstract class CRUDMapDB<E extends Identifiable> extends MapDB<E> impleme
     @Override
     public E add( E entity ) throws DatabaseException{
         if( entity == null )
-            throw new DatabaseException( "Cannot add empty entity data" );
+            throw new DatabaseException( "Cannot add empty model data" );
         int id = generateId();
         entity.setId( id );
         map.put( id, entity );
@@ -36,7 +36,7 @@ public abstract class CRUDMapDB<E extends Identifiable> extends MapDB<E> impleme
     @Override
     public void delete( E entity ) throws DatabaseException{
         if( entity == null )
-            throw new DatabaseException( "Cannot remove empty entity data" );
+            throw new DatabaseException( "Cannot remove empty model data" );
         if( !map.containsKey( entity.getId() ) )
             throw new DatabaseException( "Identifiable to delete does not exist" );
         map.remove( entity.getId() );
@@ -45,7 +45,7 @@ public abstract class CRUDMapDB<E extends Identifiable> extends MapDB<E> impleme
     @Override
     public E update( E entity ) throws DatabaseException{
         if( entity == null )
-            throw new DatabaseException( "Cannot update empty entity data" );
+            throw new DatabaseException( "Cannot update empty model data" );
         if( !map.containsKey( entity.getId() ) )
             throw new DatabaseException( "Identifiable to update does not exist" );
         map.put( entity.getId(), entity );
