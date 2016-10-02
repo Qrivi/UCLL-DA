@@ -9,13 +9,16 @@
         <artifactId>borecast</artifactId>
         <groupId>be.krivi.ucll.da</groupId>
         <version>1.0-SNAPSHOT</version>
+        <relativePath>
+            ../UCLL-DA
+        </relativePath>
     </parent>
 
     <artifactId>borecast-core</artifactId>
 
     <properties>
         <jackson-databind.version>2.7.4</jackson-databind.version>
-        
+
         <hibernate-validation.version>5.1.3.Final</hibernate-validation.version>
         <hibernate-jpa.version>1.0.0.Final</hibernate-jpa.version>
         <hibernate-entitymanager.version>4.3.1.Final</hibernate-entitymanager.version>
