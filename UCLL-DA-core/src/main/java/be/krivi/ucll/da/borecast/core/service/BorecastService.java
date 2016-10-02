@@ -1,7 +1,7 @@
 package be.krivi.ucll.da.borecast.core.service;
 
-import be.krivi.ucll.da.borecast.core.model.City;
 import be.krivi.ucll.da.borecast.core.exception.DatabaseException;
+import be.krivi.ucll.da.borecast.core.model.City;
 import be.krivi.ucll.da.borecast.core.repository.CityRepository;
 import be.krivi.ucll.da.borecast.core.repository.RepositoryFactory;
 
@@ -15,7 +15,7 @@ import java.util.Properties;
 public class BorecastService{
 
     private CityRepository cityRepository;
-    
+
     public BorecastService( Properties properties ){
         cityRepository = RepositoryFactory.createCityRepository( properties );
     }
@@ -55,7 +55,7 @@ public class BorecastService{
     public void updateCity( City city ) throws DatabaseException{
         cityRepository.update( city );
     }
-    
+
     //****************************************************************
     // endregion
     //****************************************************************
