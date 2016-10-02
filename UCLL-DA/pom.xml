@@ -9,7 +9,7 @@
     <artifactId>borecast</artifactId>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>UCLL-DA-core</module>
+        <module>../UCLL-DA-core</module>
     </modules>
 
     <packaging>pom</packaging>
