@@ -1,5 +1,7 @@
 package be.krivi.ucll.da.borecast.core.entity;
 
+import be.krivi.ucll.da.borecast.core.common.Identifiable;
+
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,7 +9,7 @@ import java.util.List;
  * Created by Krivi on 27/09/2016.
  */
 
-public class City{
+public class City extends Identifiable{
 
     private String name;
     private String country;
