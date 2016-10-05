@@ -1,12 +1,14 @@
 package be.krivi.ucll.da.borecast.core.model;
 
+import be.krivi.ucll.da.borecast.core.common.Identifiable;
+
 import java.time.LocalDate;
 
 /**
  * Created by Jan on 28/09/2016.
  */
 
-public class Forecast{
+public class Forecast extends Identifiable{
 
     private City city;
     private LocalDate date;
