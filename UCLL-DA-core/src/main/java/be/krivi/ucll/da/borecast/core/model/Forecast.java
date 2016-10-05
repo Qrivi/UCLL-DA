@@ -8,6 +8,7 @@ import java.time.LocalDate;
 
 public class Forecast{
 
+    private City city;
     private LocalDate date;
     private Condition condition;
     private Temperature temperature;
@@ -16,6 +17,14 @@ public class Forecast{
     private Wind wind;
 
     public Forecast(){
+    }
+
+    public City getCity(){
+        return city;
+    }
+
+    public void setCity( City city ){
+        this.city = city;
     }
 
     public LocalDate getDate(){

@@ -2,9 +2,6 @@ package be.krivi.ucll.da.borecast.core.model;
 
 import be.krivi.ucll.da.borecast.core.common.Identifiable;
 
-import java.util.LinkedList;
-import java.util.List;
-
 /**
  * Created by Krivi on 27/09/2016.
  */
@@ -15,10 +12,8 @@ public class City extends Identifiable{
     private String country;
     private double lat;
     private double lon;
-    private List<Forecast> forecastList;
 
     public City(){
-        forecastList = new LinkedList<>();
     }
 
     public String getName(){
