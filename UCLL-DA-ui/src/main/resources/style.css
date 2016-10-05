@@ -1,0 +1,59 @@
+
+#header {
+    -fx-background-color: #2a217c;
+    -fx-padding: 0 5px 0 15px;
+}
+
+#header>Label {
+    -fx-text-fill: white;
+    -fx-font-size: 1.5em;
+}
+
+#forecast-container {
+    -fx-background-color: #7a70d3 ;
+    -fx-spacing: 10;
+    -fx-padding: 15px 0px 0px 20px;
+}
+
+.forecast {
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-min-height: 300px;
+    -fx-min-width: 150px;
+}
+
+#first {
+    -fx-min-width: 200px;
+}
+
+.first-title {
+    -fx-font-size: 1.7em;
+    -fx-text-fill: red;
+    -fx-padding: 0 0 0 5px;
+}
+
+.first-text1 {
+    -fx-font-style: bold;
+    -fx-padding: 25px 0 0 25px;
+    -fx-font-size: 1.4em;
+}
+
+.first-text2 {
+    -fx-padding: 25px 0 0 25px;
+}
+
+.title {
+    -fx-font-size: 1.2em;
+    -fx-text-fill: darkorange;
+    -fx-padding: 0 0 0 5px;
+}
+
+.text1 {
+    -fx-font-style: bold;
+    -fx-padding: 25px 0 0 15px;
+    -fx-font-size: 1.4em;
+}
+
+.text2 {
+    -fx-padding: 25px 0 0 15px;
+}
