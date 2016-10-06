@@ -1,4 +1,4 @@
-package be.krivi.ucll.da.borecast.core.config;
+package be.krivi.ucll.da.borecast.consumer.config;
 
 public class ConfigExample{
 
