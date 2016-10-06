@@ -1,10 +1,12 @@
 package be.krivi.ucll.da.borecast.core.model;
 
+import be.krivi.ucll.da.borecast.core.common.Identifiable;
+
 /**
  * Created by Jan on 28/09/2016.
  */
 
-public class Temperature{
+public class Temperature extends Identifiable{
 
     private double day;
     private double min;
