@@ -11,5 +11,5 @@ import be.krivi.ucll.da.borecast.core.model.City;
 
 public interface CityRepository extends Database, CRUD<City, Integer>{
 
-    City getByName( String name ) throws DatabaseException;
+    City getByName( String city, String country ) throws DatabaseException;
 }

@@ -12,8 +12,13 @@ public class CityMap extends CRUDMapDB<City> implements CityRepository{
     }
 
     @Override
-    public City getByName( String name ) throws DatabaseException{
-        return map.values().stream().filter( ( n ) -> n.getName().equals( name ) ).findFirst().get();
+    public City getByName( String city, String country ) throws DatabaseException{
+        return map.values()
+                .stream()
+                .filter( ( n ) -> n.getName().equals( city ) )
+                .filter( ( n ) -> n.getCountry().equals( country ) )
+                .findFirst()
+                .get();
     }
 
     private void addTestData(){

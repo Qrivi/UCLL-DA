@@ -43,8 +43,8 @@ public class BorecastServiceImpl implements BorecastService{
         return cityRepository.getById( id );
     }
 
-    public City getCityByName( String name ) throws DatabaseException{
-        return cityRepository.getByName( name );
+    public City getCityByName( String city, String country ) throws DatabaseException{
+        return cityRepository.getByName( city, country );
     }
 
     public Collection<City> getAllCitys() throws DatabaseException{

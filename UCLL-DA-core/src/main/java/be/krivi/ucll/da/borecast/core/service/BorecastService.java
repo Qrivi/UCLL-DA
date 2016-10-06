@@ -23,7 +23,7 @@ public interface BorecastService{
 
     City getCityById( Integer id ) throws DatabaseException;
 
-    City getCityByName( String name ) throws DatabaseException;
+    City getCityByName( String city, String country ) throws DatabaseException;
 
     Collection<City> getAllCitys() throws DatabaseException;
 

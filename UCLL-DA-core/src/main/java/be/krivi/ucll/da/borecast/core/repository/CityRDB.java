@@ -14,11 +14,14 @@ public class CityRDB extends CRUDJPADatabase<City> implements CityRepository{
     }
 
     @Override
-    public City getByName( String name ) throws DatabaseException{
+    public City getByName( String city, String country ) throws DatabaseException{
         EntityManager manager = createManager();
         try{
-            return manager.createQuery( "SELECT n FROM City n WHERE n.name = :name", City.class )
-                    .setParameter( "name", name ).getSingleResult();
+            return manager
+                    .createQuery( "SELECT n FROM City n WHERE n.name = :name AND n.country = country", City.class )
+                    .setParameter( "name", city )
+                    .setParameter( "country", country )
+                    .getSingleResult();
         }catch( NoResultException ex ){
             return null;
         }catch( Exception e ){
