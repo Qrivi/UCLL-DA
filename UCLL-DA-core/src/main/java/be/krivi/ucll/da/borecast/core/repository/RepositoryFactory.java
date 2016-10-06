@@ -28,7 +28,7 @@ public class RepositoryFactory{
         return null;
     }
 
-    public static ForecastRepository createForeceastRepository( Properties properties ){
+    public static ForecastRepository createForecastRepository( Properties properties ){
 
         String type = properties.getProperty( "type" );
         String name = properties.getProperty( "name" );
