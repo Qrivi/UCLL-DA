@@ -2,7 +2,6 @@ package be.krivi.ucll.da.borecast.core.repository;
 
 import be.krivi.ucll.da.borecast.core.common.CRUD;
 import be.krivi.ucll.da.borecast.core.common.Database;
-import be.krivi.ucll.da.borecast.core.model.Condition;
 import be.krivi.ucll.da.borecast.core.model.Temperature;
 
 /**
