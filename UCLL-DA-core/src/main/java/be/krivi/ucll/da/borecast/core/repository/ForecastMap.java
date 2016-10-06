@@ -55,14 +55,5 @@ public class ForecastMap extends CRUDMapDB<Forecast> implements ForecastReposito
         Forecast a = new Forecast();
         a.setCity( z );
         a.setDate( y );
-
-
-        private City city;
-        private LocalDate date;
-        private Condition condition;
-        private Temperature temperature;
-        private double humidity;
-        private double pressure;
-        private Wind wind;
     }
 }
