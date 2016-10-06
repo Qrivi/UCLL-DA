@@ -1,7 +1,9 @@
 package be.krivi.ucll.da.borecast.core.repository;
 
 import be.krivi.ucll.da.borecast.core.exception.DatabaseException;
-import be.krivi.ucll.da.borecast.core.model.*;
+import be.krivi.ucll.da.borecast.core.model.City;
+import be.krivi.ucll.da.borecast.core.model.Condition;
+import be.krivi.ucll.da.borecast.core.model.Forecast;
 import be.krivi.ucll.da.borecast.core.repository.map.CRUDMapDB;
 
 import java.time.LocalDate;
@@ -19,12 +21,6 @@ public class ForecastMap extends CRUDMapDB<Forecast> implements ForecastReposito
     @Override
     public List<Forecast> getByCity( City city ) throws DatabaseException{
         return map.values().stream().filter( ( n ) -> n.getCity().equals( city ) ).collect( Collectors.toList() );
-    }
-
-    @Override
-    public List<Forecast> getByCity( String city ) throws DatabaseException{
-        //TODO implement
-        return null;
     }
 
     private void addTestData(){

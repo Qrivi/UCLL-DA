@@ -15,6 +15,4 @@ import java.util.List;
 public interface ForecastRepository extends Database, CRUD<Forecast, Integer>{
 
     List<Forecast> getByCity( City city ) throws DatabaseException;
-
-    List<Forecast> getByCity( String city ) throws DatabaseException;
 }

@@ -1,10 +1,12 @@
 package be.krivi.ucll.da.borecast.core.model;
 
+import be.krivi.ucll.da.borecast.core.common.Identifiable;
+
 /**
  * Created by Jan on 28/09/2016.
  */
 
-public class Condition{
+public class Condition extends Identifiable{
 
     private String title;
     private String description;
