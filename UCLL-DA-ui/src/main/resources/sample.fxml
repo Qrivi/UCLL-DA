@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.collections.FXCollections?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import java.lang.String?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<VBox prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml"
+      fx:controller="sample.Controller" stylesheets="style.css">
+
+    <HBox id="header">
+        <Label text="City "></Label>
+        <ComboBox id="dropdown">
+            <items>
+                <FXCollections fx:factory="observableArrayList">
+                    <String fx:value="Leuven"/>
+                    <String fx:value="GenkSthadMudafaker"/>
+                    <String fx:value="Wallonië"/>
+                </FXCollections>
+            </items>
+            <value >
+                <String fx:value="GenkSthadMudafaker" />
+            </value>
+        </ComboBox>
+    </HBox>
+
+    <HBox id="forecast-container">
+
+        <VBox styleClass="forecast" id="first">
+            <Label styleClass="first-title" text="Maandag 10 Oktober"/>
+            <Label styleClass="first-text1" text="Vol zon mado!"/>
+            <Label styleClass="first-text2" text="Doe die hoofddoek af!"/>
+        </VBox>
+
+        <VBox styleClass="forecast">
+            <Label styleClass="title" text="Dinsdag 11 Oktober"/>
+            <Label styleClass="text1" text="Vol zon mado!"/>
+            <Label styleClass="text2" text="Doe die hoofddoek af!"/>
+        </VBox>
+        <VBox styleClass="forecast">
+            <Label styleClass="title" text="Woensdag 12 Oktober"/>
+            <Label styleClass="text1" text="Vol zon mado!"/>
+            <Label styleClass="text2" text="Doe die hoofddoek af!"/>
+        </VBox>
+        <VBox styleClass="forecast">
+            <Label styleClass="title" text="Donderdag 13 Oktober"/>
+            <Label styleClass="text1" text="Vol zon mado!"/>
+            <Label styleClass="text2" text="Doe die hoofddoek af!"/>
+        </VBox>
+        <VBox styleClass="forecast">
+            <Label styleClass="title" text="Vrijdag 14 Oktober"/>
+            <Label styleClass="text1" text="Vol zon mado!"/>
+            <Label styleClass="text2" text="Doe die hoofddoek af!"/>
+        </VBox>
+        <VBox styleClass="forecast">
+            <Label styleClass="title" text="Zaterdag 15 Oktober"/>
+            <Label styleClass="text1" text="Vol zon mado!"/>
+            <Label styleClass="text2" text="Doe die hoofddoek af!"/>
+        </VBox>
+        <VBox styleClass="forecast">
+            <Label styleClass="title" text="Zondag 16 Oktober"/>
+            <Label styleClass="text1" text="Vol zon mado!"/>
+            <Label styleClass="text2" text="Doe die hoofddoek af!"/>
+        </VBox>
+    </HBox>
+
+</VBox>
