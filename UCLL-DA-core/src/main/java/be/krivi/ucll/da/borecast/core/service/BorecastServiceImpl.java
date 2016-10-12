@@ -1,5 +1,6 @@
 package be.krivi.ucll.da.borecast.core.service;
 
+import be.krivi.ucll.da.borecast.consumer.Consumer;
 import be.krivi.ucll.da.borecast.core.exception.DatabaseException;
 import be.krivi.ucll.da.borecast.core.model.City;
 import be.krivi.ucll.da.borecast.core.model.Forecast;
@@ -7,6 +8,9 @@ import be.krivi.ucll.da.borecast.core.repository.CityRepository;
 import be.krivi.ucll.da.borecast.core.repository.ForecastRepository;
 import be.krivi.ucll.da.borecast.core.repository.RepositoryFactory;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 import java.util.Properties;
@@ -17,12 +21,34 @@ import java.util.Properties;
 
 public class BorecastServiceImpl implements BorecastService{
 
+    private static final String DB_CONFIG = "DatabaseConfig.properties";
+
+    //@Inject
+    private Consumer consumer;
     private CityRepository cityRepository;
     private ForecastRepository forecastRepository;
 
     public BorecastServiceImpl( Properties properties ){
+        //TODO use @inject
+        consumer = new Consumer();
         cityRepository = RepositoryFactory.createCityRepository( properties );
         forecastRepository = RepositoryFactory.createForecastRepository( properties );
+    }
+
+    public BorecastServiceImpl(){
+        //TODO use @inject
+        consumer = new Consumer();
+        Properties properties = new Properties();
+        ClassLoader loader = Thread.currentThread().getContextClassLoader();
+
+        try( InputStream resourceStream = loader.getResourceAsStream( DB_CONFIG ) ){
+            properties.load( resourceStream );
+
+            cityRepository = RepositoryFactory.createCityRepository( properties );
+            forecastRepository = RepositoryFactory.createForecastRepository( properties );
+        }catch( IOException e ){
+            //RIP
+        }
     }
 
     public void openConnection(){
@@ -75,16 +101,33 @@ public class BorecastServiceImpl implements BorecastService{
         return forecastRepository.getById( id );
     }
 
-    public List<Forecast> getByCity( City city ) throws DatabaseException{
-        return forecastRepository.getByCity( city );
+    public List<Forecast> getForecastByCity( City city ) throws DatabaseException{
+        List<Forecast> forecastList = forecastRepository.getByCity( city );
+        if( forecastList.isEmpty() ){
+            addForecastList( consumer.fetchForecastForCity( city ) );
+            return forecastRepository.getByCity( city );
+        }else if( forecastList.get( forecastList.size() ).getDate() != LocalDate.now().plusDays( 6 ) ){
+            for( Forecast f : consumer.fetchForecastForCity( city ) )
+                if( forecastRepository.getById( f.getId() ) == null )
+                    addForecast( f );
+                else
+                    updateForecast( f );
+            return forecastRepository.getByCity( city );
+        }
+        return forecastList;
     }
 
-    public Collection<Forecast> getAllForecast() throws DatabaseException{
+    public Collection<Forecast> getAllForecasts() throws DatabaseException{
         return forecastRepository.getAll();
     }
 
     public void addForecast( Forecast forecast ) throws DatabaseException{
         forecastRepository.add( forecast );
+    }
+
+    public void addForecastList( List<Forecast> forecastList ){
+        for( Forecast f : forecastList )
+            addForecast( f );
     }
 
     public void deleteForecast( Forecast forecast ) throws DatabaseException{

@@ -43,9 +43,9 @@ public interface BorecastService{
 
     Forecast getForecastById( Integer id ) throws DatabaseException;
 
-    List<Forecast> getByCity( City city ) throws DatabaseException;
+    List<Forecast> getForecastByCity( City city ) throws DatabaseException;
 
-    Collection<Forecast> getAllForecast() throws DatabaseException;
+    Collection<Forecast> getAllForecasts() throws DatabaseException;
 
     void addForecast( Forecast forecast ) throws DatabaseException;
 

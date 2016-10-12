@@ -76,4 +76,13 @@ public class Forecast extends Identifiable{
     public void setWind( Wind wind ){
         this.wind = wind;
     }
+
+    @Override
+    public String toString(){
+        return "Forecast{" +
+                "city=" + city.getName() +
+                ", date=" + date +
+                ", temperature=" + temperature.getDay() +
+                '}';
+    }
 }

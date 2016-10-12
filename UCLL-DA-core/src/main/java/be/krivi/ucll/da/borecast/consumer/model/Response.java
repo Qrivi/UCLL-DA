@@ -13,10 +13,10 @@ public class Response{
 
     public String cod; // HTTP status code
     public City city;
-    public List<Forecast> forecastList;
+    public List<Forecast> list;
 
-    public Response( List<Forecast> forecastList ){
-        this.forecastList = forecastList;
+    public Response( List<Forecast> list ){
+        this.list = list;
     }
 
     public Response(){
@@ -38,11 +38,11 @@ public class Response{
         this.city = city;
     }
 
-    public List<Forecast> getForecastList(){
-        return forecastList;
+    public List<Forecast> getList(){
+        return list;
     }
 
-    public void setForecastList( List<Forecast> forecastList ){
-        this.forecastList = forecastList;
+    public void setList( List<Forecast> list ){
+        this.list = list;
     }
 }

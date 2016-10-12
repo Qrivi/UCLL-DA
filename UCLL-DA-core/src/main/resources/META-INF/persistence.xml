@@ -2,14 +2,14 @@
 <persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1"
              xmlns="http://xmlns.jcp.org/xml/ns/persistence"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-    <persistence-unit name="networkdatabase" transaction-type="RESOURCE_LOCAL">
+    <persistence-unit name="borecastdatabase" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>be.krivi.ucll.da.borecast.core.model.City</class>
         <properties>
             <property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver"/>
             <property name="hibernate.connection.url"
                       value="jdbc:mysql://localhost:3306/borecast?autoReconnectForPools=true"/>
-            <property name="hibernate.connection.username" value="borecast-local"/>
+            <property name="hibernate.connection.username" value="borecastlocal"/>
             <property name="hibernate.connection.password" value="c1573feb706bf937e483b3446a21e5a354414b41"/>
             <property name="hibernate.dialect" value="org.hibernate.dialect.MySQLDialect"/>
             <property name="hibernate.hbm2ddl.auto" value="update"/>

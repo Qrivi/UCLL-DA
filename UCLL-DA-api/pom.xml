@@ -2,6 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -13,12 +14,12 @@
         </relativePath>
     </parent>
 
-    <artifactId>borecast-consumer</artifactId>
+    <artifactId>borecast-api</artifactId>
 
     <properties>
         <borecast-core.version>1.0-SNAPSHOT</borecast-core.version>
 
-        <jersey.version>2.12</jersey.version>
+        <jersey.version>2.23.2</jersey.version>
     </properties>
 
     <dependencies>
@@ -31,6 +32,16 @@
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-client</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>${jersey.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.glassfish.jersey.core</groupId>
+            <artifactId>jersey-server</artifactId>
             <version>${jersey.version}</version>
         </dependency>
     </dependencies>
