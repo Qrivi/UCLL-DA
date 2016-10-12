@@ -21,6 +21,8 @@
         <borecast-core.version>1.0-SNAPSHOT</borecast-core.version>
 
         <jersey.version>2.23.2</jersey.version>
+
+        <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
     </properties>
 
     <dependencies>
@@ -46,4 +48,17 @@
             <version>${jersey.version}</version>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${maven-war-plugin.version}</version>
+                <configuration>
+                    <webXml>web\WEB-INF\web.xml</webXml>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>
