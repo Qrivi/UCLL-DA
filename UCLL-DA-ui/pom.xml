@@ -15,4 +15,5 @@
     </parent>
 
     <artifactId>borecast-ui</artifactId>
+    <packaging>jar</packaging>
 </project>

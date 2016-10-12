@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>../UCLL-DA-core</module>
+        <module>../UCLL-DA-ui</module>
         <module>../UCLL-DA-api</module>
     </modules>
 
