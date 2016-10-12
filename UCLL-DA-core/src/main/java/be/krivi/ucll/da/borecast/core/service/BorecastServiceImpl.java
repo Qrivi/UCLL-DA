@@ -8,6 +8,7 @@ import be.krivi.ucll.da.borecast.core.repository.CityRepository;
 import be.krivi.ucll.da.borecast.core.repository.ForecastRepository;
 import be.krivi.ucll.da.borecast.core.repository.RepositoryFactory;
 
+import javax.enterprise.context.ApplicationScoped;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
@@ -19,11 +20,11 @@ import java.util.Properties;
  * Created by Jan on 28/09/2016.
  */
 
+@ApplicationScoped
 public class BorecastServiceImpl implements BorecastService{
 
     private static final String DB_CONFIG = "DatabaseConfig.properties";
 
-    //@Inject
     private Consumer consumer;
     private CityRepository cityRepository;
     private ForecastRepository forecastRepository;
@@ -102,9 +103,13 @@ public class BorecastServiceImpl implements BorecastService{
     }
 
     public List<Forecast> getForecastByCity( City city ) throws DatabaseException{
+
         List<Forecast> forecastList = forecastRepository.getByCity( city );
+
         if( forecastList.isEmpty() ){
-            addForecastList( consumer.fetchForecastForCity( city ) );
+            forecastList = consumer.fetchForecastForCity( city );
+            addForecastList( forecastList );
+            addCity( forecastList.get( 0 ).getCity() );
             return forecastRepository.getByCity( city );
         }else if( forecastList.get( forecastList.size() ).getDate() != LocalDate.now().plusDays( 6 ) ){
             for( Forecast f : consumer.fetchForecastForCity( city ) )

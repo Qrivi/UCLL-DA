@@ -1,19 +1,12 @@
 package be.krivi.ucll.da.borecast.core.service;
 
-import be.krivi.ucll.da.borecast.core.model.City;
-import be.krivi.ucll.da.borecast.core.model.Forecast;
-import org.junit.Before;
-import org.junit.Test;
-
-import java.util.List;
-
 /**
  * Created by Jan on 28/09/2016.
  */
 
 public class BorecastServiceImplTest{
 
-    BorecastService facade;
+   /* BorecastService facade;
     City genk;
 
     @Before
@@ -32,5 +25,5 @@ public class BorecastServiceImplTest{
 
         for( Forecast f : forecastList )
             System.out.println( f );
-    }
+    }*/
 }

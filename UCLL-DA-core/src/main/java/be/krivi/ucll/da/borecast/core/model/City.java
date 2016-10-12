@@ -51,28 +51,19 @@ public class City extends Identifiable{
     @Override
     public boolean equals( Object o ){
         if( this == o ) return true;
-        if( !( o instanceof City ) ) return false;
-        if( !super.equals( o ) ) return false;
+        if( o == null || getClass() != o.getClass() ) return false;
 
         City city = (City)o;
 
-        if( Double.compare( city.getLat(), getLat() ) != 0 ) return false;
-        if( Double.compare( city.getLon(), getLon() ) != 0 ) return false;
-        if( !getName().equals( city.getName() ) ) return false;
-        return getCountry().equals( city.getCountry() );
-
+        if( !name.equalsIgnoreCase( city.name ) ) return false;
+        return country.equalsIgnoreCase( city.country );
     }
 
     @Override
     public int hashCode(){
         int result = super.hashCode();
-        long temp;
-        result = 31 * result + getName().hashCode();
-        result = 31 * result + getCountry().hashCode();
-        temp = Double.doubleToLongBits( getLat() );
-        result = 31 * result + (int)( temp ^ ( temp >>> 32 ) );
-        temp = Double.doubleToLongBits( getLon() );
-        result = 31 * result + (int)( temp ^ ( temp >>> 32 ) );
+        result = 31 * result + name.hashCode();
+        result = 31 * result + country.hashCode();
         return result;
     }
 }

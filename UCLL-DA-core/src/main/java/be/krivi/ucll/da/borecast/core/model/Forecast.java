@@ -3,6 +3,8 @@ package be.krivi.ucll.da.borecast.core.model;
 import be.krivi.ucll.da.borecast.core.common.Identifiable;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 /**
  * Created by Jan on 28/09/2016.
@@ -31,6 +33,11 @@ public class Forecast extends Identifiable{
 
     public LocalDate getDate(){
         return date;
+    }
+
+    //TODO fix this
+    public Date getDateDate(){
+        return Date.from(date.atStartOfDay( ZoneId.systemDefault()).toInstant());
     }
 
     public void setDate( LocalDate date ){

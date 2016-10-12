@@ -5,9 +5,7 @@ import be.krivi.ucll.da.borecast.consumer.model.Response;
 import be.krivi.ucll.da.borecast.consumer.model.Temp;
 import be.krivi.ucll.da.borecast.consumer.model.Weather;
 import be.krivi.ucll.da.borecast.core.model.*;
-import be.krivi.ucll.da.borecast.core.service.BorecastService;
 
-import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -20,11 +18,10 @@ import java.util.List;
  * Created by Krivi on 06/10/2016.
  */
 
-@Consumes("application/json")
+
+@Consumes( "application/json" )
 public class Consumer{
 
-    @Inject
-    private BorecastService borecastService;
     private Client client;
 
     public Consumer(){
@@ -45,7 +42,14 @@ public class Consumer{
         if( "200".equals( response.getCod() ) ){
             for( be.krivi.ucll.da.borecast.consumer.model.Forecast data : response.getList() ){
                 Forecast f = new Forecast();
-                f.setCity( city );
+
+                City ci = new City();
+                ci.setName( response.getCity().getName() );
+                ci.setCountry( response.getCity().getCountry() );
+                ci.setLat( response.getCity().getCoord().getLat() );
+                ci.setLon( response.getCity().getCoord().getLon() );
+                f.setCity( ci );
+
                 f.setDate( data.getDt() );
 
                 Condition c = new Condition();

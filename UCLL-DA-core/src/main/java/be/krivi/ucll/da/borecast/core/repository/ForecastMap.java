@@ -2,28 +2,32 @@ package be.krivi.ucll.da.borecast.core.repository;
 
 import be.krivi.ucll.da.borecast.core.exception.DatabaseException;
 import be.krivi.ucll.da.borecast.core.model.City;
-import be.krivi.ucll.da.borecast.core.model.Condition;
 import be.krivi.ucll.da.borecast.core.model.Forecast;
 import be.krivi.ucll.da.borecast.core.repository.map.CRUDMapDB;
 
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ForecastMap extends CRUDMapDB<Forecast> implements ForecastRepository{
 
     public ForecastMap(){
         super();
-        addTestData();
+        //addTestData();
     }
 
     @Override
     public List<Forecast> getByCity( City city ) throws DatabaseException{
-        return map.values().stream().filter( ( n ) -> n.getCity().equals( city ) ).collect( Collectors.toList() );
+        List<Forecast> list = new LinkedList<>();
+        for( Forecast f : map.values() ){
+            if( f.getCity().equals( city ) ){
+                list.add( f );
+            }
+        }
+        return list;
+        // return map.values().stream().filter( ( n ) -> n.getCity().equals( city ) ).collect( Collectors.toList() );
     }
 
-    private void addTestData(){
+   /* private void addTestData(){
 
         City z = new City();
         z.setName( "Beijing" );
@@ -51,5 +55,5 @@ public class ForecastMap extends CRUDMapDB<Forecast> implements ForecastReposito
         Forecast a = new Forecast();
         a.setCity( z );
         a.setDate( y );
-    }
+    }*/
 }

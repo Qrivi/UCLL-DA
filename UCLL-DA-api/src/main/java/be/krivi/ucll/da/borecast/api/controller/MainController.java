@@ -3,10 +3,13 @@ package be.krivi.ucll.da.borecast.api.controller;
 import be.krivi.ucll.da.borecast.core.model.City;
 import be.krivi.ucll.da.borecast.core.model.Forecast;
 import be.krivi.ucll.da.borecast.core.service.BorecastService;
-import be.krivi.ucll.da.borecast.core.service.BorecastServiceImpl;
 
+import javax.inject.Inject;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -16,21 +19,27 @@ import java.util.List;
 @Path( "/api" )
 public class MainController{
 
+    @Inject
+    private BorecastService borecastService;
 
-    private BorecastService borecastService = new BorecastServiceImpl();
-
+    @GET
+    @Path( "/forecast/{count}/{country}/{city}" )
+    @Produces( "application/json")
+    public List<Forecast> getRoot( @PathParam( "city" ) String name,
+                                   @PathParam( "country" ) String country,
+                                   @PathParam( "count" ) String count ) throws Exception{
+        City city = new City();
+        city.setName( name );
+        city.setCountry( country );
+        return borecastService.getForecastByCity( city );
+    }
 
 
     @GET
-    public List<Forecast> getRoot() throws Exception{
-        City genk = new City();
-        genk.setName( "Genk" );
-        genk.setCountry( "BE" );
-        genk.setLat( 50.965 );
-        genk.setLon( 5.50082 );
-
-        return borecastService.getForecastByCity( genk );
+    @Path( "/cities" )
+    @Produces( "application/json")
+    public Collection<City> getCities() {
+        return borecastService.getAllCitys();
     }
-
 
 }
