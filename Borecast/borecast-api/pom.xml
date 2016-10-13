@@ -10,7 +10,7 @@
         <groupId>be.krivi.ucll.da</groupId>
         <version>1.0-SNAPSHOT</version>
         <relativePath>
-            ../UCLL-DA
+            ../borecast
         </relativePath>
     </parent>
 
