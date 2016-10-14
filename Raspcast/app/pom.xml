@@ -11,7 +11,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>../core</module>
+        <module>../model</module>
     </modules>
 
     <properties>
