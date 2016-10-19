@@ -6,6 +6,7 @@ import be.krivi.ucll.da.borecast.consumer.model.Temp;
 import be.krivi.ucll.da.borecast.consumer.model.Weather;
 import be.krivi.ucll.da.borecast.core.model.*;
 
+import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
@@ -19,6 +20,7 @@ import java.util.List;
  */
 
 
+@RequestScoped
 @Consumes( "application/json" )
 public class Consumer{
 

@@ -8,7 +8,7 @@ import be.krivi.ucll.da.borecast.core.repository.CityRepository;
 import be.krivi.ucll.da.borecast.core.repository.ForecastRepository;
 import be.krivi.ucll.da.borecast.core.repository.RepositoryFactory;
 
-import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import java.io.IOException;
 import java.io.InputStream;
 import java.time.LocalDate;
@@ -20,25 +20,26 @@ import java.util.Properties;
  * Created by Jan on 28/09/2016.
  */
 
-@ApplicationScoped
+
 public class BorecastServiceImpl implements BorecastService{
 
     private static final String DB_CONFIG = "DatabaseConfig.properties";
 
+    @Inject
     private Consumer consumer;
     private CityRepository cityRepository;
     private ForecastRepository forecastRepository;
 
     public BorecastServiceImpl( Properties properties ){
         //TODO use @inject
-        consumer = new Consumer();
+        //consumer = new Consumer();
         cityRepository = RepositoryFactory.createCityRepository( properties );
         forecastRepository = RepositoryFactory.createForecastRepository( properties );
     }
 
     public BorecastServiceImpl(){
         //TODO use @inject
-        consumer = new Consumer();
+        //consumer = new Consumer();
         Properties properties = new Properties();
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
 

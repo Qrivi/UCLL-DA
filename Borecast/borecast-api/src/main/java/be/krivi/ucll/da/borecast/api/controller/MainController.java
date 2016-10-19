@@ -4,11 +4,9 @@ import be.krivi.ucll.da.borecast.core.model.City;
 import be.krivi.ucll.da.borecast.core.model.Forecast;
 import be.krivi.ucll.da.borecast.core.service.BorecastService;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import java.util.Collection;
 import java.util.List;
 
@@ -16,6 +14,7 @@ import java.util.List;
  * Created by Jan on 12/10/2016.
  */
 
+@Stateless
 @Path( "/api" )
 public class MainController{
 
@@ -23,11 +22,11 @@ public class MainController{
     private BorecastService borecastService;
 
     @GET
-    @Path( "/forecast/{count}/{country}/{city}" )
-    @Produces( "application/json")
-    public List<Forecast> getRoot( @PathParam( "city" ) String name,
-                                   @PathParam( "country" ) String country,
-                                   @PathParam( "count" ) String count ) throws Exception{
+    @Path( "/forecast/{count}" )
+    @Produces( "application/json" )
+    public List<Forecast> getRoot( @PathParam( "count" ) String count,
+                                   @QueryParam( "country" ) String country,
+                                   @QueryParam( "city" ) String name ) throws Exception{
         City city = new City();
         city.setName( name );
         city.setCountry( country );
@@ -37,8 +36,8 @@ public class MainController{
 
     @GET
     @Path( "/cities" )
-    @Produces( "application/json")
-    public Collection<City> getCities() {
+    @Produces( "application/json" )
+    public Collection<City> getCities(){
         return borecastService.getAllCitys();
     }
 
