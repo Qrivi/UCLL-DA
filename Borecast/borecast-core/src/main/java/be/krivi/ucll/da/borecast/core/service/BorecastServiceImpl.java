@@ -105,8 +105,8 @@ public class BorecastServiceImpl implements BorecastService{
         return forecastRepository.getById( id );
     }
 
-    public List<Forecast> getForecastByCity( City city, int index) throws DatabaseException{
-
+    public List<Forecast> getForecastByCity( City city, int index ) throws DatabaseException{
+        index = index <= 0 || index > 7 ? 7 : index;
         List<Forecast> forecastList = forecastRepository.getByCity( city );
 
         if( forecastList.isEmpty() ){
@@ -149,7 +149,7 @@ public class BorecastServiceImpl implements BorecastService{
 
     @Schedule( minute = "30", persistent = false )
     public void updateAllForecasts(){
-        for(City c : getAllCitys())
+        for( City c : getAllCitys() )
             getForecastByCity( c, 7 );
     }
 

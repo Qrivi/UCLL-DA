@@ -31,9 +31,6 @@ public class MainController{
         city.setName( name );
         city.setCountry( country );
 
-        if(count <= 0 || count > 7)
-            count = 7;
-
         return borecastService.getForecastByCity( city, count );
     }
 
