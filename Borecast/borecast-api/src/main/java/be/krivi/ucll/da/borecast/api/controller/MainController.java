@@ -24,15 +24,18 @@ public class MainController{
     @GET
     @Path( "/forecast/{count}" )
     @Produces( "application/json" )
-    public List<Forecast> getRoot( @PathParam( "count" ) String count,
+    public List<Forecast> getRoot( @PathParam( "count" ) int count,
                                    @QueryParam( "country" ) String country,
                                    @QueryParam( "city" ) String name ) throws Exception{
         City city = new City();
         city.setName( name );
         city.setCountry( country );
-        return borecastService.getForecastByCity( city );
-    }
 
+        if(count <= 0 || count > 7)
+            count = 7;
+
+        return borecastService.getForecastByCity( city, count );
+    }
 
     @GET
     @Path( "/cities" )
@@ -40,5 +43,4 @@ public class MainController{
     public Collection<City> getCities(){
         return borecastService.getAllCitys();
     }
-
 }

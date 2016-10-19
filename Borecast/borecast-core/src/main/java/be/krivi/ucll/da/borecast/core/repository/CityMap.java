@@ -8,7 +8,7 @@ public class CityMap extends CRUDMapDB<City> implements CityRepository{
 
     public CityMap(){
         super();
-        addTestData();
+        //addTestData();
     }
 
     @Override
@@ -21,7 +21,7 @@ public class CityMap extends CRUDMapDB<City> implements CityRepository{
                 .get();
     }
 
-    private void addTestData(){
+  /*  private void addTestData(){
 
         City a = new City();
         a.setName( "Leuven" );
@@ -48,8 +48,8 @@ public class CityMap extends CRUDMapDB<City> implements CityRepository{
         d.setLon( 116.394686 );
 
         map.put( 0, a );
-        map.put( 0, b );
-        map.put( 0, c );
-        map.put( 0, d );
-    }
+        map.put( 1, b );
+        map.put( 2, c );
+        map.put( 3, d );
+    }*/
 }

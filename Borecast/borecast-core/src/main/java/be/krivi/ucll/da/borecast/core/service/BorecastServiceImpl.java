@@ -8,6 +8,8 @@ import be.krivi.ucll.da.borecast.core.repository.CityRepository;
 import be.krivi.ucll.da.borecast.core.repository.ForecastRepository;
 import be.krivi.ucll.da.borecast.core.repository.RepositoryFactory;
 
+import javax.ejb.Schedule;
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.io.IOException;
 import java.io.InputStream;
@@ -20,7 +22,7 @@ import java.util.Properties;
  * Created by Jan on 28/09/2016.
  */
 
-
+@Stateless
 public class BorecastServiceImpl implements BorecastService{
 
     private static final String DB_CONFIG = "DatabaseConfig.properties";
@@ -103,24 +105,25 @@ public class BorecastServiceImpl implements BorecastService{
         return forecastRepository.getById( id );
     }
 
-    public List<Forecast> getForecastByCity( City city ) throws DatabaseException{
+    public List<Forecast> getForecastByCity( City city, int index) throws DatabaseException{
 
         List<Forecast> forecastList = forecastRepository.getByCity( city );
 
         if( forecastList.isEmpty() ){
             forecastList = consumer.fetchForecastForCity( city );
             addForecastList( forecastList );
-            addCity( forecastList.get( 0 ).getCity() );
-            return forecastRepository.getByCity( city );
-        }else if( forecastList.get( forecastList.size() ).getDate() != LocalDate.now().plusDays( 6 ) ){
+            if( city.equals( forecastList.get( 0 ).getCity() ) )
+                addCity( forecastList.get( 0 ).getCity() );
+            return forecastRepository.getByCity( city ).subList( 0, index );
+        }else if( forecastList.get( forecastList.size() - 1 ).getDate() != LocalDate.now().plusDays( 6 ) ){
             for( Forecast f : consumer.fetchForecastForCity( city ) )
                 if( forecastRepository.getById( f.getId() ) == null )
                     addForecast( f );
                 else
                     updateForecast( f );
-            return forecastRepository.getByCity( city );
+            return forecastRepository.getByCity( city ).subList( 0, index );
         }
-        return forecastList;
+        return forecastList.subList( 0, index );
     }
 
     public Collection<Forecast> getAllForecasts() throws DatabaseException{
@@ -142,6 +145,12 @@ public class BorecastServiceImpl implements BorecastService{
 
     public void updateForecast( Forecast forecast ) throws DatabaseException{
         forecastRepository.update( forecast );
+    }
+
+    @Schedule( minute = "30", persistent = false )
+    public void updateAllForecasts(){
+        for(City c : getAllCitys())
+            getForecastByCity( c, 7 );
     }
 
     //****************************************************************
