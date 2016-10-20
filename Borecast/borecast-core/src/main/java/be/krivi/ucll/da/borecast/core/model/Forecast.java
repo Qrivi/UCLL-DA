@@ -2,9 +2,7 @@ package be.krivi.ucll.da.borecast.core.model;
 
 import be.krivi.ucll.da.borecast.core.common.Identifiable;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * Created by Jan on 28/09/2016.
@@ -13,7 +11,7 @@ import java.util.Date;
 public class Forecast extends Identifiable{
 
     private City city;
-    private LocalDate date;
+    private LocalDateTime date;
     private Condition condition;
     private Temperature temperature;
     private double humidity;
@@ -31,16 +29,11 @@ public class Forecast extends Identifiable{
         this.city = city;
     }
 
-    public LocalDate getDate(){
+    public LocalDateTime getDate(){
         return date;
     }
 
-    //TODO fix this
-    public Date getDateDate(){
-        return Date.from(date.atStartOfDay( ZoneId.systemDefault()).toInstant());
-    }
-
-    public void setDate( LocalDate date ){
+    public void setDate( LocalDateTime date ){
         this.date = date;
     }
 

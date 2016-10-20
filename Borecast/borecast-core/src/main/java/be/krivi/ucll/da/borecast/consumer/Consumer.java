@@ -12,6 +12,9 @@ import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -52,7 +55,7 @@ public class Consumer{
                 ci.setLon( response.getCity().getCoord().getLon() );
                 f.setCity( ci );
 
-                f.setDate( data.getDt() );
+                f.setDate( LocalDateTime.ofInstant( Instant.ofEpochSecond( data.getDt() ), ZoneId.systemDefault() ) );
 
                 Condition c = new Condition();
                 Weather weather = data.getWeather();

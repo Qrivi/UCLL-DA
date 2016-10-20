@@ -2,8 +2,6 @@ package be.krivi.ucll.da.borecast.consumer.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import java.time.LocalDate;
-
 /**
  * Created by Krivi on 27/09/2016.
  */
@@ -11,7 +9,8 @@ import java.time.LocalDate;
 @JsonIgnoreProperties( ignoreUnknown = true )
 public class Forecast{
 
-    public LocalDate dt;
+
+    public long dt;
     public Temp temp;
     public Weather weather;
     public double humidity;
@@ -25,11 +24,11 @@ public class Forecast{
     public Forecast(){
     }
 
-    public LocalDate getDt(){
+    public long getDt(){
         return dt;
     }
 
-    public void setDt( LocalDate dt ){
+    public void setDt( long dt ){
         this.dt = dt;
     }
 

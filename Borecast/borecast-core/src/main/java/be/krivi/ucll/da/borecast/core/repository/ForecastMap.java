@@ -35,13 +35,13 @@ public class ForecastMap extends CRUDMapDB<Forecast> implements ForecastReposito
         z.setLat( 39.907501 );
         z.setLon( 116.397232 );
 
-        LocalDate y = LocalDate.now();
-        LocalDate x = y.plus( 1, ChronoUnit.DAYS );
-        LocalDate w = x.plus( 1, ChronoUnit.DAYS );
-        LocalDate v = w.plus( 1, ChronoUnit.DAYS );
-        LocalDate u = v.plus( 1, ChronoUnit.DAYS );
-        LocalDate t = u.plus( 1, ChronoUnit.DAYS );
-        LocalDate s = t.plus( 1, ChronoUnit.DAYS );
+        LocalDateTime y = LocalDateTime.now();
+        LocalDateTime x = y.plus( 1, ChronoUnit.DAYS );
+        LocalDateTime w = x.plus( 1, ChronoUnit.DAYS );
+        LocalDateTime v = w.plus( 1, ChronoUnit.DAYS );
+        LocalDateTime u = v.plus( 1, ChronoUnit.DAYS );
+        LocalDateTime t = u.plus( 1, ChronoUnit.DAYS );
+        LocalDateTime s = t.plus( 1, ChronoUnit.DAYS );
 
         Condition r = new Condition();
         r.setTitle( "Clear" );
