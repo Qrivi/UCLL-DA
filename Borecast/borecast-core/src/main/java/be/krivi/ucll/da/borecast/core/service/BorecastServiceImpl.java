@@ -105,8 +105,8 @@ public class BorecastServiceImpl implements BorecastService{
         return forecastRepository.getById( id );
     }
 
-    public List<Forecast> getForecastByCity( City city, int index ) throws DatabaseException{
-        index = index <= 0 || index > 7 ? 7 : index;
+    public List<Forecast> getForecastByCity( City city, int limit ) throws DatabaseException{
+        limit = limit <= 0 ? 6 : limit - 1;
         List<Forecast> forecastList = forecastRepository.getByCity( city );
 
         if( forecastList.isEmpty() ){
@@ -114,16 +114,18 @@ public class BorecastServiceImpl implements BorecastService{
             addForecastList( forecastList );
             if( city.equals( forecastList.get( 0 ).getCity() ) )
                 addCity( forecastList.get( 0 ).getCity() );
-            return forecastRepository.getByCity( city ).subList( 0, index );
-        }else if( forecastList.get( forecastList.size() - 1 ).getDate() != LocalDate.now().plusDays( 6 ) ){
+            forecastList = forecastRepository.getByCity( city );
+            return forecastList.isEmpty() ? forecastList : forecastList.subList( forecastList.size() - limit, limit );
+        }else if( !forecastList.get( forecastList.size() - 1 ).getDate().toLocalDate().equals( LocalDate.now().plusDays( 6 )) ){
             for( Forecast f : consumer.fetchForecastForCity( city ) )
                 if( forecastRepository.getById( f.getId() ) == null )
                     addForecast( f );
                 else
                     updateForecast( f );
-            return forecastRepository.getByCity( city ).subList( 0, index );
+            forecastList = forecastRepository.getByCity( city );
+            return forecastList.subList( forecastList.size() - limit, limit );
         }
-        return forecastList.subList( 0, index );
+        return forecastList.subList( forecastList.size() - limit, limit );
     }
 
     public Collection<Forecast> getAllForecasts() throws DatabaseException{
