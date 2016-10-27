@@ -2,6 +2,7 @@ package be.krivi.ucll.da.raspcast.model.core;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 @Table( name = "humidity" )
 public class Humidity{
 
+    @Id
     @NotNull( message = "{NotNull.Humidity.datetime" )
     @Column( name = "dateTime" )
     private LocalDateTime dateTime;

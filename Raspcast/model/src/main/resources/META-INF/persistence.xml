@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.1"
+             xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+    <persistence-unit name="raspcast-persist" transaction-type="JTA">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <jta-data-source>jdbc/RaspcastJNDI</jta-data-source>
+        <class>be.krivi.ucll.da.raspcast.model.core.Humidity</class>
+        <class>be.krivi.ucll.da.raspcast.model.core.Temperature</class>
+    </persistence-unit>
+</persistence>
