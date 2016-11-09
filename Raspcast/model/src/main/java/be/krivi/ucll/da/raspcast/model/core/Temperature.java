@@ -18,7 +18,7 @@ import java.time.LocalDateTime;
 public class Temperature{
 
     @Id
-    @NotNull( message = "{NotNull.Temperature.datetime" )
+    @NotNull( message = "{NotNull.Temperature.datetime}" )
     @Column( name = "dateTime" )
     private LocalDateTime dateTime;
 

@@ -18,12 +18,12 @@ import java.time.LocalDateTime;
 public class Humidity{
 
     @Id
-    @NotNull( message = "{NotNull.Humidity.datetime" )
+    @NotNull( message = "{NotNull.Humidity.datetime}" )
     @Column( name = "dateTime" )
     private LocalDateTime dateTime;
 
-    @Min( value = 0, message = "{Min.Humidity.data" )
-    @Max( value = 100, message = "{Max.Humidity.data" )
+    @Min( value = 0, message = "{Min.Humidity.data}" )
+    @Max( value = 100, message = "{Max.Humidity.data}" )
     @Column( name = "humidity" )
     private double data;
 
