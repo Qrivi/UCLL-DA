@@ -19,6 +19,7 @@
 
     <properties>
         <model.version>1.0-SNAPSHOT</model.version>
+        <parser.version>1.0-SNAPSHOT</parser.version>
 
         <jersey.version>2.23.2</jersey.version>
 
@@ -30,6 +31,11 @@
             <groupId>be.krivi.ucll.da.raspcast</groupId>
             <artifactId>model</artifactId>
             <version>${model.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>be.krivi.ucll.da.raspcast</groupId>
+            <artifactId>parser</artifactId>
+            <version>${parser.version}</version>
         </dependency>
 
         <dependency>
