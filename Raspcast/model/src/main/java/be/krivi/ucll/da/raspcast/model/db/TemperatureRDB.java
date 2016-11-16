@@ -1,16 +1,20 @@
 package be.krivi.ucll.da.raspcast.model.db;
 
-import be.krivi.ucll.da.raspcast.model.db.common.CRUDJPADatabase;
 import be.krivi.ucll.da.raspcast.model.core.Temperature;
+import be.krivi.ucll.da.raspcast.model.db.common.CRUDJPADatabase;
+
+import javax.annotation.ManagedBean;
+import javax.enterprise.context.Dependent;
 
 /**
  * Created by Krivi on 16/11/2016.
  */
-
+@Dependent
+@ManagedBean
 public class TemperatureRDB extends CRUDJPADatabase<Temperature> implements TemperatureDB{
 
-    public TemperatureRDB( String name ){
-        super( name, Temperature.class );
+    public TemperatureRDB(){
+        super( Temperature.class );
 
     }
 }

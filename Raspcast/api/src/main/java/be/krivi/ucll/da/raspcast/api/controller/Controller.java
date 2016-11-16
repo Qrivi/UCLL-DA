@@ -9,6 +9,7 @@ import be.krivi.ucll.da.raspcast.parser.dto.WeatherData;
 import be.krivi.ucll.da.raspcast.parser.reader.Reader;
 import be.krivi.ucll.da.raspcast.parser.reader.ReaderFactory;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -22,6 +23,7 @@ import java.util.List;
  * Created by Jan on 16/11/2016.
  */
 
+@Stateless
 @Path( "/api" )
 public class Controller{
 

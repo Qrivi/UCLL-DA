@@ -20,7 +20,7 @@ public class CRUDJPADatabase<ENTITY> implements CRUD<ENTITY, LocalDateTime>{
 
     private final Class<ENTITY> typeClass;
 
-    public CRUDJPADatabase( String name, Class<ENTITY> typeClass ){
+    public CRUDJPADatabase(Class<ENTITY> typeClass ){
         this.typeClass = typeClass;
     }
 
