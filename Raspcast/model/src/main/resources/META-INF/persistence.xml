@@ -5,8 +5,11 @@
 
     <persistence-unit name="raspcast-persist" transaction-type="JTA">
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+
         <jta-data-source>jdbc/RaspcastJNDI</jta-data-source>
+
         <class>be.krivi.ucll.da.raspcast.model.core.Humidity</class>
         <class>be.krivi.ucll.da.raspcast.model.core.Temperature</class>
     </persistence-unit>
+
 </persistence>
