@@ -23,13 +23,17 @@ public interface RaspService{
 
     List<Humidity> getHumidity( int offset, int limit );
 
-    List<Humidity> getHumidityByDateTime( LocalDate dateTime );
+    Humidity getHumidityByDateTime( LocalDateTime date );
 
-    List<Humidity> getHumidityBeforeDateTime( LocalDate dateTime );
+    void removeHumidityByDateTime( LocalDateTime date );
 
-    List<Humidity> getHumidityAfterDateTime( LocalDate dateTime );
+    List<Humidity> getHumidityByDate( LocalDate date );
 
-    List<Humidity> getHumidityBetweenDateTime( LocalDate after, LocalDate before );
+    List<Humidity> getHumidityBeforeDate( LocalDate date );
+
+    List<Humidity> getHumidityAfterDate( LocalDate date );
+
+    List<Humidity> getHumidityBetweenDates( LocalDate after, LocalDate before );
 
     //****************************************************************
     // endregion
@@ -45,13 +49,17 @@ public interface RaspService{
 
     List<Temperature> getTemperature( int offset, int limit );
 
-    List<Temperature> getTemperatureByDateTime( LocalDate dateTime );
+    Temperature getTemperatureByDateTime( LocalDateTime date );
+    
+    void removeTemperatureByDateTime( LocalDateTime date );
+    
+    List<Temperature> getTemperatureByDate( LocalDate date );
 
-    List<Temperature> getTemperatureBeforeDateTime( LocalDate dateTime );
+    List<Temperature> getTemperatureBeforeDate( LocalDate date );
 
-    List<Temperature> getTemperatureAfterDateTime( LocalDate dateTime );
+    List<Temperature> getTemperatureAfterDate( LocalDate date );
 
-    List<Temperature> getTemperatureBetweenDateTime( LocalDate after, LocalDate before );
+    List<Temperature> getTemperatureBetweenDates( LocalDate after, LocalDate before );
 
     //****************************************************************
     // endregion

@@ -7,6 +7,7 @@ import be.krivi.ucll.da.raspcast.model.db.TemperatureDB;
 
 import javax.inject.Inject;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -53,31 +54,41 @@ public class RaspServiceImpl implements RaspService{
     }
 
     @Override
-    public List<Humidity> getHumidityByDateTime( LocalDate dateTime ){
+    public Humidity getHumidityByDateTime( LocalDateTime dateTime ){
+        return humidityDB.getByDateTime( dateTime );
+    }
+
+    @Override
+    public void removeHumidityByDateTime( LocalDateTime dateTime ){
+        humidityDB.delete( humidityDB.getByDateTime( dateTime ) );
+    }
+
+    @Override
+    public List<Humidity> getHumidityByDate( LocalDate date ){
         return humidityDB.getAll()
                 .stream()
-                .filter( ( n ) -> n.getDateTime().toLocalDate().isEqual( dateTime ) )
+                .filter( ( n ) -> n.getDateTime().toLocalDate().isEqual( date ) )
                 .collect( Collectors.toList() );
     }
 
     @Override
-    public List<Humidity> getHumidityBeforeDateTime( LocalDate dateTime ){
+    public List<Humidity> getHumidityBeforeDate( LocalDate date ){
         return humidityDB.getAll()
                 .stream()
-                .filter( ( n ) -> n.getDateTime().toLocalDate().isBefore( dateTime ) )
+                .filter( ( n ) -> n.getDateTime().toLocalDate().isBefore( date ) )
                 .collect( Collectors.toList() );
     }
 
     @Override
-    public List<Humidity> getHumidityAfterDateTime( LocalDate dateTime ){
+    public List<Humidity> getHumidityAfterDate( LocalDate date ){
         return humidityDB.getAll()
                 .stream()
-                .filter( ( n ) -> n.getDateTime().toLocalDate().isAfter( dateTime ) )
+                .filter( ( n ) -> n.getDateTime().toLocalDate().isAfter( date ) )
                 .collect( Collectors.toList() );
     }
 
     @Override
-    public List<Humidity> getHumidityBetweenDateTime( LocalDate after, LocalDate before ){
+    public List<Humidity> getHumidityBetweenDates( LocalDate after, LocalDate before ){
         return humidityDB.getAll()
                 .stream()
                 .filter( ( n ) -> n.getDateTime().toLocalDate().isAfter( after ) )
@@ -119,31 +130,41 @@ public class RaspServiceImpl implements RaspService{
     }
 
     @Override
-    public List<Temperature> getTemperatureByDateTime( LocalDate dateTime ){
+    public Temperature getTemperatureByDateTime( LocalDateTime dateTime ){
+        return temperatureDB.getByDateTime( dateTime );
+    }
+
+    @Override
+    public void removeTemperatureByDateTime( LocalDateTime dateTime ){
+        temperatureDB.delete( temperatureDB.getByDateTime( dateTime ) );
+    }
+
+    @Override
+    public List<Temperature> getTemperatureByDate( LocalDate date ){
         return temperatureDB.getAll()
                 .stream()
-                .filter( ( n ) -> n.getDateTime().toLocalDate().isEqual( dateTime ) )
+                .filter( ( n ) -> n.getDateTime().toLocalDate().isEqual( date ) )
                 .collect( Collectors.toList() );
     }
 
     @Override
-    public List<Temperature> getTemperatureBeforeDateTime( LocalDate dateTime ){
+    public List<Temperature> getTemperatureBeforeDate( LocalDate date ){
         return temperatureDB.getAll()
                 .stream()
-                .filter( ( n ) -> n.getDateTime().toLocalDate().isBefore( dateTime ) )
+                .filter( ( n ) -> n.getDateTime().toLocalDate().isBefore( date ) )
                 .collect( Collectors.toList() );
     }
 
     @Override
-    public List<Temperature> getTemperatureAfterDateTime( LocalDate dateTime ){
+    public List<Temperature> getTemperatureAfterDate( LocalDate date ){
         return temperatureDB.getAll()
                 .stream()
-                .filter( ( n ) -> n.getDateTime().toLocalDate().isAfter( dateTime ) )
+                .filter( ( n ) -> n.getDateTime().toLocalDate().isAfter( date ) )
                 .collect( Collectors.toList() );
     }
 
     @Override
-    public List<Temperature> getTemperatureBetweenDateTime( LocalDate after, LocalDate before ){
+    public List<Temperature> getTemperatureBetweenDates( LocalDate after, LocalDate before ){
         return temperatureDB.getAll()
                 .stream()
                 .filter( ( n ) -> n.getDateTime().toLocalDate().isAfter( after ) )
