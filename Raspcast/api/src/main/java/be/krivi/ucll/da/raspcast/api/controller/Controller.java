@@ -31,15 +31,17 @@ public class Controller{
     @GET
     @Path( "/fetch" )
     @Produces( "application/json" )
-    public String fetchData(){
+    public String fetchData( @QueryParam( "data" ) String data ){
         try{
             Reader reader = ReaderFactory.getReader( Config.READER );
-            WeatherData data = reader.read();
+            WeatherData weather = reader.read();
 
-            service.addHumidity( data.getHumidity() );
-            service.addTemperature( data.getTemperature() );
+            if( !"t".equals( data ) )
+                service.addHumidity( weather.getHumidity() );
+            if( !"h".equals( data ) )
+                service.addTemperature( weather.getTemperature() );
 
-            return "Data was added (" + data + ")";
+            return "Data was added (" + weather + ")";
         }catch( Exception e ){
             return "Beep beep bong, something went wrong";
         }
