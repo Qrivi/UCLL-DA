@@ -76,6 +76,15 @@ public class RaspServiceImpl implements RaspService{
                 .collect( Collectors.toList() );
     }
 
+    @Override
+    public List<Humidity> getHumidityBetweenDateTime( LocalDate after, LocalDate before ){
+        return humidityDB.getAll()
+                .stream()
+                .filter( ( n ) -> n.getDateTime().toLocalDate().isAfter( after ) )
+                .filter( ( n ) -> n.getDateTime().toLocalDate().isBefore( before ) )
+                .collect( Collectors.toList() );
+    }
+
     //****************************************************************
     // endregion
     //****************************************************************
@@ -130,6 +139,15 @@ public class RaspServiceImpl implements RaspService{
         return temperatureDB.getAll()
                 .stream()
                 .filter( ( n ) -> n.getDateTime().toLocalDate().isAfter( dateTime ) )
+                .collect( Collectors.toList() );
+    }
+
+    @Override
+    public List<Temperature> getTemperatureBetweenDateTime( LocalDate after, LocalDate before ){
+        return temperatureDB.getAll()
+                .stream()
+                .filter( ( n ) -> n.getDateTime().toLocalDate().isAfter( after ) )
+                .filter( ( n ) -> n.getDateTime().toLocalDate().isBefore( before ) )
                 .collect( Collectors.toList() );
     }
 

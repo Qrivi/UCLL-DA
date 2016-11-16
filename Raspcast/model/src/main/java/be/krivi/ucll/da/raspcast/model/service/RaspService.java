@@ -4,6 +4,7 @@ import be.krivi.ucll.da.raspcast.model.core.Humidity;
 import be.krivi.ucll.da.raspcast.model.core.Temperature;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -28,6 +29,8 @@ public interface RaspService{
 
     List<Humidity> getHumidityAfterDateTime( LocalDate dateTime );
 
+    List<Humidity> getHumidityBetweenDateTime( LocalDate after, LocalDate before );
+
     //****************************************************************
     // endregion
     //****************************************************************
@@ -47,6 +50,8 @@ public interface RaspService{
     List<Temperature> getTemperatureBeforeDateTime( LocalDate dateTime );
 
     List<Temperature> getTemperatureAfterDateTime( LocalDate dateTime );
+
+    List<Temperature> getTemperatureBetweenDateTime( LocalDate after, LocalDate before );
 
     //****************************************************************
     // endregion
