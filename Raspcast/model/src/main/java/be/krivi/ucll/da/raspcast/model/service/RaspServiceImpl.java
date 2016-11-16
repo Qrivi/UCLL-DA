@@ -5,6 +5,7 @@ import be.krivi.ucll.da.raspcast.model.core.Temperature;
 import be.krivi.ucll.da.raspcast.model.db.HumidityDB;
 import be.krivi.ucll.da.raspcast.model.db.TemperatureDB;
 
+import javax.ejb.Stateless;
 import javax.inject.Inject;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -16,6 +17,7 @@ import java.util.stream.Collectors;
  * Created by Krivi on 16/11/2016.
  */
 
+@Stateless
 public class RaspServiceImpl implements RaspService{
 
     @Inject
