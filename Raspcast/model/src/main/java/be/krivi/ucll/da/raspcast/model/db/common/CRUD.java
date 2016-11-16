@@ -8,9 +8,9 @@ import java.util.Collection;
  * Created by Krivi on 21/02/16.
  */
 
-public interface CRUD<E, K extends Object>{
+public interface CRUD<E, K>{
 
-    E getById( K id ) throws DatabaseException;
+    E getByDateTime( K id ) throws DatabaseException;
 
     Collection<E> getAll() throws DatabaseException;
 

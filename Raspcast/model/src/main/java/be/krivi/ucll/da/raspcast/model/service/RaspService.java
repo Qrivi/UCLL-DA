@@ -3,7 +3,8 @@ package be.krivi.ucll.da.raspcast.model.service;
 import be.krivi.ucll.da.raspcast.model.core.Humidity;
 import be.krivi.ucll.da.raspcast.model.core.Temperature;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Created by Krivi on 16/11/2016.
@@ -17,9 +18,15 @@ public interface RaspService{
 
     void addHumidity( double data );
 
-    Humidity getHumidity( int offset, int limit );
+    List<Humidity> getHumidity();
 
-    Humidity getHumidityByDateTime( LocalDateTime dateTime );
+    List<Humidity> getHumidity( int offset, int limit );
+
+    List<Humidity> getHumidityByDateTime( LocalDate dateTime );
+
+    List<Humidity> getHumidityBeforeDateTime( LocalDate dateTime );
+
+    List<Humidity> getHumidityAfterDateTime( LocalDate dateTime );
 
     //****************************************************************
     // endregion
@@ -31,9 +38,15 @@ public interface RaspService{
 
     void addTemperature( double data );
 
-    Temperature getTemperature( int offset, int limit );
+    List<Temperature> getTemperature();
 
-    Temperature getTemperatureByDateTime( LocalDateTime dateTime );
+    List<Temperature> getTemperature( int offset, int limit );
+
+    List<Temperature> getTemperatureByDateTime( LocalDate dateTime );
+
+    List<Temperature> getTemperatureBeforeDateTime( LocalDate dateTime );
+
+    List<Temperature> getTemperatureAfterDateTime( LocalDate dateTime );
 
     //****************************************************************
     // endregion

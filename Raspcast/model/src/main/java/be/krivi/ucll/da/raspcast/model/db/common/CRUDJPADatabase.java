@@ -67,7 +67,7 @@ public class CRUDJPADatabase<ENTITY> implements CRUD<ENTITY, Integer>{
     }
 
     @Override
-    public ENTITY getById( Integer id ){
+    public ENTITY getByDateTime( Integer id ){
         //        EntityManager manager = createManager();
         //        try{
         return manager.find( typeClass, id );
