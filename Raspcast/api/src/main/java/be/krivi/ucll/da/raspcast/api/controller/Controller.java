@@ -10,6 +10,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
@@ -47,15 +48,26 @@ public class Controller{
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd" );
 
         if( userData.getDate() != null )
-            return service.getHumidityByDateTime( LocalDate.parse( userData.getDate(), formatter ) );
-        if( userData.getBeforeDate() != null && userData.getAfterDate() != null)
-            //TODO;
-        if(userData.getBeforeDate() != null)
-            return service.getHumidityBeforeDateTime( LocalDate.parse( userData.getBeforeDate(), formatter ) );
-        if(userData.getAfterDate() != null)
-            return service.getHumidityBeforeDateTime( LocalDate.parse( userData.getAfterDate(), formatter ) );
+            return service.getHumidityByDate( LocalDate.parse( userData.getDate(), formatter ) );
+        if( userData.getBeforeDate() != null && userData.getAfterDate() != null )
+            return service.getHumidityBetweenDates( LocalDate.parse( userData.getBeforeDate(), formatter )
+                    , LocalDate.parse( userData.getAfterDate(), formatter ) );
+        if( userData.getBeforeDate() != null )
+            return service.getHumidityBeforeDate( LocalDate.parse( userData.getBeforeDate(), formatter ) );
+        if( userData.getAfterDate() != null )
+            return service.getHumidityBeforeDate( LocalDate.parse( userData.getAfterDate(), formatter ) );
         return Collections.emptyList();
     }
+
+    @DELETE
+    @Path( "/humidity" )
+    @Consumes( MediaType.APPLICATION_JSON )
+    public void removeHumidity( UserData userData ) throws Exception{
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS" );
+        service.removeHumidityByDateTime( LocalDateTime.parse( userData.getDate(), formatter ) );
+    }
+
+
 
     @GET
     @Path( "/temperature" )
@@ -79,13 +91,22 @@ public class Controller{
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd" );
 
         if( userData.getDate() != null )
-            return service.getTemperatureByDateTime( LocalDate.parse( userData.getDate(), formatter ) );
-        if( userData.getBeforeDate() != null && userData.getAfterDate() != null)
-            //TODO;
-            if(userData.getBeforeDate() != null)
-                return service.getTemperatureBeforeDateTime( LocalDate.parse( userData.getBeforeDate(), formatter ) );
-        if(userData.getAfterDate() != null)
-            return service.getTemperatureAfterDateTime( LocalDate.parse( userData.getAfterDate(), formatter ) );
+            return service.getTemperatureByDate( LocalDate.parse( userData.getDate(), formatter ) );
+        if( userData.getBeforeDate() != null && userData.getAfterDate() != null )
+            return service.getTemperatureBetweenDates( LocalDate.parse( userData.getBeforeDate(), formatter )
+                    , LocalDate.parse( userData.getAfterDate(), formatter ) );
+        if( userData.getBeforeDate() != null )
+            return service.getTemperatureBeforeDate( LocalDate.parse( userData.getBeforeDate(), formatter ) );
+        if( userData.getAfterDate() != null )
+            return service.getTemperatureAfterDate( LocalDate.parse( userData.getAfterDate(), formatter ) );
         return Collections.emptyList();
+    }
+
+    @DELETE
+    @Path( "/temperature" )
+    @Consumes( MediaType.APPLICATION_JSON )
+    public void removeTemperature( UserData userData ) throws Exception{
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS" );
+        service.removeTemperatureByDateTime( LocalDateTime.parse( userData.getDate(), formatter ) );
     }
 }
