@@ -4,12 +4,14 @@ import be.krivi.ucll.da.raspcast.parser.dto.WeatherData;
 import be.krivi.ucll.da.raspcast.parser.exception.ReadException;
 import com.google.gson.Gson;
 
+import javax.enterprise.inject.Alternative;
 import java.io.IOException;
 
 /**
  * Created by Krivi on 16/11/2016.
  */
 
+@Alternative
 public class PythonReader implements Reader{
 
     private String path;

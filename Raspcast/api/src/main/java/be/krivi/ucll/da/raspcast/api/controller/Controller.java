@@ -5,9 +5,6 @@ import be.krivi.ucll.da.raspcast.api.dto.UserData;
 import be.krivi.ucll.da.raspcast.model.core.Humidity;
 import be.krivi.ucll.da.raspcast.model.core.Temperature;
 import be.krivi.ucll.da.raspcast.model.service.RaspService;
-import be.krivi.ucll.da.raspcast.parser.dto.WeatherData;
-import be.krivi.ucll.da.raspcast.parser.reader.Reader;
-import be.krivi.ucll.da.raspcast.parser.reader.ReaderFactory;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -30,7 +27,7 @@ public class Controller{
     @Inject
     private RaspService service;
 
-    @GET
+/*    @GET
     @Path( "/fetch" )
     @Produces( "application/json" )
     public String fetchData( @QueryParam( "data" ) String data ){
@@ -47,7 +44,7 @@ public class Controller{
         }catch( Exception e ){
             return "Beep beep bong, something went wrong";
         }
-    }
+    }*/
 
     //****************************************************************
     // region Humidity

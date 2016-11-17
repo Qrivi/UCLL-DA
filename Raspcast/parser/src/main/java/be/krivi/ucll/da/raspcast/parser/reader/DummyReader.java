@@ -2,12 +2,14 @@ package be.krivi.ucll.da.raspcast.parser.reader;
 
 import be.krivi.ucll.da.raspcast.parser.dto.WeatherData;
 
+import javax.enterprise.inject.Default;
 import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * Created by Krivi on 16/11/2016.
  */
 
+@Default
 public class DummyReader implements Reader{
 
     @Override

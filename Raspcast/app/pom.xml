@@ -12,7 +12,6 @@
 
     <modules>
         <module>../model</module>
-        <module>../parser</module>
         <module>../api</module>
     </modules>
 

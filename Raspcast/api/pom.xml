@@ -32,11 +32,6 @@
             <artifactId>model</artifactId>
             <version>${model.version}</version>
         </dependency>
-        <dependency>
-            <groupId>be.krivi.ucll.da.raspcast</groupId>
-            <artifactId>parser</artifactId>
-            <version>${parser.version}</version>
-        </dependency>
 
         <dependency>
             <groupId>org.glassfish.jersey.core</groupId>
