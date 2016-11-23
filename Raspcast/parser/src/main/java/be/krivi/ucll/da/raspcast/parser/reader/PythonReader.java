@@ -2,8 +2,9 @@ package be.krivi.ucll.da.raspcast.parser.reader;
 
 import be.krivi.ucll.da.raspcast.parser.dto.WeatherData;
 import be.krivi.ucll.da.raspcast.parser.exception.ReadException;
-import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import javax.ejb.Stateless;
 import javax.enterprise.inject.Alternative;
 import java.io.IOException;
 
@@ -11,6 +12,7 @@ import java.io.IOException;
  * Created by Krivi on 16/11/2016.
  */
 
+@Stateless
 @Alternative
 public class PythonReader implements Reader{
 
@@ -26,11 +28,9 @@ public class PythonReader implements Reader{
     @Override
     public WeatherData read() throws ReadException{
         try{
-            Gson g = new Gson();
             Process p = Runtime.getRuntime().exec( "python " + path );
 
-            return g.fromJson( p.getOutputStream().toString(), WeatherData.class );
-
+            return new ObjectMapper().readValue( p.getOutputStream().toString(), WeatherData.class );
         }catch( IOException e ){
             throw new ReadException( e );
         }

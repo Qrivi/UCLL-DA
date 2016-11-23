@@ -5,7 +5,7 @@
          version="3.1">
 
     <servlet>
-        <servlet-name>RaspcastAPI</servlet-name>
+        <servlet-name>Parser</servlet-name>
         <servlet-class>
             org.glassfish.jersey.servlet.ServletContainer
         </servlet-class>
@@ -13,12 +13,12 @@
             <param-name>
                 jersey.config.server.provider.packages
             </param-name>
-            <param-value>be.krivi.ucll.da.raspcast-parser.parser.controller</param-value>
+            <param-value>be.krivi.ucll.da.raspcast.parser.controller</param-value>
         </init-param>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>RaspcastAPI</servlet-name>
+        <servlet-name>Parser</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -37,6 +37,6 @@ public class WeatherData{
 
     @Override
     public String toString(){
-        return "H:" + humidity + ",T:"+ temperature;
+        return "H:" + humidity + ",T:" + temperature;
     }
 }
