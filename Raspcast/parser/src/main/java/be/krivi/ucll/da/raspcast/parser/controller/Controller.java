@@ -1,6 +1,7 @@
 package be.krivi.ucll.da.raspcast.parser.controller;
 
 import be.krivi.ucll.da.raspcast.parser.dto.WeatherData;
+import be.krivi.ucll.da.raspcast.parser.exception.ReadException;
 import be.krivi.ucll.da.raspcast.parser.reader.Reader;
 
 import javax.ejb.Stateless;
@@ -24,6 +25,10 @@ public class Controller{
     @Path( "/" )
     @Produces( "application/json" )
     public WeatherData getWeather(){
-        return reader.read();
+        try{
+            return reader.read();
+        }catch( ReadException e ){
+            return null;
+        }
     }
 }
