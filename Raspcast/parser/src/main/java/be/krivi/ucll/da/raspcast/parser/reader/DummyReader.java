@@ -16,8 +16,8 @@ public class DummyReader implements Reader{
     public WeatherData read(){
 
         WeatherData dummy = new WeatherData();
-        dummy.setTemperature( ThreadLocalRandom.current().nextInt( -20, 40 + 1 ) / 10 );
-        dummy.setHumidity( ThreadLocalRandom.current().nextInt( 0, 1000 + 1 ) / 10 );
+        dummy.setTemperature( ThreadLocalRandom.current().nextDouble( -20, 40 + 1 ) );
+        dummy.setHumidity( ThreadLocalRandom.current().nextDouble( 0, 100 + 1 ) );
 
         return dummy;
     }

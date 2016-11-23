@@ -8,7 +8,11 @@ import be.krivi.ucll.da.raspcast.model.service.RaspService;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
+import javax.json.JsonObject;
 import javax.ws.rs.*;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -27,24 +31,28 @@ public class Controller{
     @Inject
     private RaspService service;
 
-/*    @GET
+    @GET
     @Path( "/fetch" )
     @Produces( "application/json" )
-    public String fetchData( @QueryParam( "data" ) String data ){
-        try{
-            Reader reader = ReaderFactory.getReader( Config.READER );
-            WeatherData weather = reader.read();
+    public String fetchData( @QueryParam( "data" ) @DefaultValue( "*" ) String data ){
+        Client client = ClientBuilder.newClient();
 
-            if( !"t".equals( data ) )
-                service.addHumidity( weather.getHumidity() );
-            if( !"h".equals( data ) )
-                service.addTemperature( weather.getTemperature() );
+        WebTarget target = client.target( "http://localhost:8080/parser/weather" );
+        JsonObject s = target.request( MediaType.APPLICATION_JSON_TYPE ).get( JsonObject.class );
 
-            return "Data was added (" + weather + ")";
-        }catch( Exception e ){
-            return "Beep beep bong, something went wrong";
+        if( data.equals( "*" ) ){
+            service.addHumidity( Double.parseDouble( s.get( "humidity" ).toString() ) );
+            service.addTemperature( Double.parseDouble( s.get( "temperature" ).toString() ) );
         }
-    }*/
+        else if(data.equals( "humidity" ))
+            service.addHumidity( Double.parseDouble( s.get( "humidity" ).toString() ) );
+        else if(data.equals( "temperature" ))
+            service.addTemperature( Double.parseDouble( s.get( "temperature" ).toString() ) );
+        else
+            return "Wrong parameter";
+
+        return "Nice";
+    }
 
     //****************************************************************
     // region Humidity
