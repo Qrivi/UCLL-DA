@@ -1,5 +1,6 @@
 package be.krivi.ucll.da.raspcast.parser.reader;
 
+import be.krivi.ucll.da.raspcast.parser.config.Config;
 import be.krivi.ucll.da.raspcast.parser.dto.WeatherData;
 import be.krivi.ucll.da.raspcast.parser.exception.ReadException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -16,19 +17,13 @@ import java.io.IOException;
 @Alternative
 public class PythonReader implements Reader{
 
-    private String path;
-
     public PythonReader(){
-    }
-
-    public void setPath( String path ){
-        this.path = path;
     }
 
     @Override
     public WeatherData read() throws ReadException{
         try{
-            Process p = Runtime.getRuntime().exec( "python " + path );
+            Process p = Runtime.getRuntime().exec( "python " + Config.PYTHON_PATH + " 2302 22" );
 
             return new ObjectMapper().readValue( p.getOutputStream().toString(), WeatherData.class );
         }catch( IOException e ){
