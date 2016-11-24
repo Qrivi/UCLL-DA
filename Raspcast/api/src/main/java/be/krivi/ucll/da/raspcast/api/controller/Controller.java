@@ -34,22 +34,18 @@ public class Controller{
     @GET
     @Path( "/fetch" )
     @Produces( "application/json" )
-    public String fetchData( @QueryParam( "data" ) @DefaultValue( "*" ) String data ){
+    public String fetchData( @QueryParam( "data" ) String data ){
+
         Client client = ClientBuilder.newClient();
 
         WebTarget target = client.target( "http://localhost:8080/parser/weather" );
         JsonObject s = target.request( MediaType.APPLICATION_JSON_TYPE ).get( JsonObject.class );
 
-        if( data.equals( "*" ) ){
+        if( !"t".equals( data ) )
             service.addHumidity( Double.parseDouble( s.get( "humidity" ).toString() ) );
+        if( !"h".equals( data ) )
             service.addTemperature( Double.parseDouble( s.get( "temperature" ).toString() ) );
-        }
-        else if(data.equals( "humidity" ))
-            service.addHumidity( Double.parseDouble( s.get( "humidity" ).toString() ) );
-        else if(data.equals( "temperature" ))
-            service.addTemperature( Double.parseDouble( s.get( "temperature" ).toString() ) );
-        else
-            return "Wrong parameter";
+
 
         return "Nice";
     }
