@@ -28,10 +28,10 @@ public class CRUDJPADatabase<ENTITY> implements CRUD<ENTITY, LocalDateTime>{
     public ENTITY add( ENTITY obj ){
         //        EntityManager manager = createManager();
         try{
-            manager.getTransaction().begin();
+            //manager.getTransaction().begin();
             manager.persist( obj );
             manager.flush();
-            manager.getTransaction().commit();
+            //manager.getTransaction().commit();
             return obj;
         }catch( Exception e ){
             throw new DatabaseException( "Adding object to database failed: " + obj, e );
@@ -44,9 +44,9 @@ public class CRUDJPADatabase<ENTITY> implements CRUD<ENTITY, LocalDateTime>{
     public ENTITY update( ENTITY obj ){
         //        EntityManager manager = createManager();
         try{
-            manager.getTransaction().begin();
+            //manager.getTransaction().begin();
             ENTITY o = manager.merge( obj );
-            manager.getTransaction().commit();
+            //manager.getTransaction().commit();
             return o;
         }catch( Exception e ){
             throw new DatabaseException( "Updating object in database failed: " + obj, e );
@@ -59,9 +59,9 @@ public class CRUDJPADatabase<ENTITY> implements CRUD<ENTITY, LocalDateTime>{
     public void delete( ENTITY obj ){
         //        EntityManager manager = createManager();
         try{
-            manager.getTransaction().begin();
+            //manager.getTransaction().begin();
             manager.remove( manager.contains( obj ) ? obj : manager.merge( obj ) );
-            manager.getTransaction().commit();
+            //manager.getTransaction().commit();
         }catch( Exception e ){
             throw new DatabaseException( "Removing object from database failed: " + obj, e );
         }//finally{

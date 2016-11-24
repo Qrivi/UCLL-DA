@@ -6,6 +6,7 @@ import be.krivi.ucll.da.raspcast.model.core.Humidity;
 import be.krivi.ucll.da.raspcast.model.core.Temperature;
 import be.krivi.ucll.da.raspcast.model.service.RaspService;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
 import javax.json.JsonObject;
@@ -24,11 +25,10 @@ import java.util.List;
  * Created by Jan on 16/11/2016.
  */
 
-@Stateless
 @Path( "/api" )
 public class Controller{
 
-    @Inject
+    @EJB
     private RaspService service;
 
     @GET
