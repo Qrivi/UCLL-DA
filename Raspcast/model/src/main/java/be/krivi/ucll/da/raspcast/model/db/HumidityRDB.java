@@ -9,8 +9,8 @@ import javax.enterprise.context.Dependent;
 /**
  * Created by Krivi on 16/11/2016.
  */
+
 @Dependent
-@ManagedBean
 public class HumidityRDB extends CRUDJPADatabase<Humidity> implements HumidityDB{
 
     public HumidityRDB( ){

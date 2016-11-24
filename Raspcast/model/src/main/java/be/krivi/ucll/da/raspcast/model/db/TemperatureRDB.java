@@ -9,12 +9,11 @@ import javax.enterprise.context.Dependent;
 /**
  * Created by Krivi on 16/11/2016.
  */
+
 @Dependent
-@ManagedBean
 public class TemperatureRDB extends CRUDJPADatabase<Temperature> implements TemperatureDB{
 
     public TemperatureRDB(){
         super( Temperature.class );
-
     }
 }
