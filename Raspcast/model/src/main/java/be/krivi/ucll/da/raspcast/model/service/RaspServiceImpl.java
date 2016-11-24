@@ -2,11 +2,10 @@ package be.krivi.ucll.da.raspcast.model.service;
 
 import be.krivi.ucll.da.raspcast.model.core.Humidity;
 import be.krivi.ucll.da.raspcast.model.core.Temperature;
-import be.krivi.ucll.da.raspcast.model.db.HumidityDB;
-import be.krivi.ucll.da.raspcast.model.db.TemperatureDB;
+import be.krivi.ucll.da.raspcast.model.db.HumidityRDB;
+import be.krivi.ucll.da.raspcast.model.db.TemperatureRDB;
 
 import javax.ejb.Stateless;
-import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -22,10 +21,10 @@ import java.util.stream.Collectors;
 public class RaspServiceImpl implements RaspService{
 
     @Inject
-    private HumidityDB humidityDB;
+    private HumidityRDB humidityDB;
 
     @Inject
-    private TemperatureDB temperatureDB;
+    private TemperatureRDB temperatureDB;
 
     //****************************************************************
     // region Humidity
