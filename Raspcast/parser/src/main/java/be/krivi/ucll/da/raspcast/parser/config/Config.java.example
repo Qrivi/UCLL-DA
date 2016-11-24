@@ -1,0 +1,9 @@
+package be.krivi.ucll.da.raspcast.parser.config;
+
+/**
+ * Created by Jan on 24/11/2016.
+ */
+public class Config{
+
+    public static final String PYTHON_PATH = "/projects/readDHT22.py";
+}
