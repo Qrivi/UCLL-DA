@@ -50,9 +50,9 @@ public interface RaspService{
     List<Temperature> getTemperature( int offset, int limit );
 
     Temperature getTemperatureByDateTime( LocalDateTime date );
-    
+
     void removeTemperatureByDateTime( LocalDateTime date );
-    
+
     List<Temperature> getTemperatureByDate( LocalDate date );
 
     List<Temperature> getTemperatureBeforeDate( LocalDate date );

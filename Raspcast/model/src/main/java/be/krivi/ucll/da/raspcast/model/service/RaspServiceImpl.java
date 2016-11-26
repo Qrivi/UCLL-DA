@@ -6,7 +6,6 @@ import be.krivi.ucll.da.raspcast.model.db.HumidityDB;
 import be.krivi.ucll.da.raspcast.model.db.TemperatureDB;
 
 import javax.ejb.Stateless;
-import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import java.time.LocalDate;
 import java.time.LocalDateTime;

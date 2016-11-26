@@ -2,7 +2,6 @@ package be.krivi.ucll.da.raspcast.model.db.common;
 
 import be.krivi.ucll.da.raspcast.model.exception.DatabaseException;
 
-import javax.enterprise.context.Dependent;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
@@ -16,10 +15,10 @@ import java.util.Collection;
 
 public abstract class CRUDJPADatabase<ENTITY> implements CRUD<ENTITY, LocalDateTime>{
 
+    private final Class<ENTITY> typeClass;
+    
     @PersistenceContext( unitName = "raspcast-persist" )
     private EntityManager manager;
-
-    private final Class<ENTITY> typeClass;
 
     public CRUDJPADatabase( Class<ENTITY> typeClass ){
         this.typeClass = typeClass;
