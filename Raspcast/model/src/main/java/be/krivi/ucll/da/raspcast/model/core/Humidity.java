@@ -19,7 +19,7 @@ public class Humidity{
 
     @Id
     @NotNull( message = "{NotNull.Humidity.datetime}" )
-    @Column( name = "dateTime" )
+    @Column( name = "dateTime", unique = true )
     private LocalDateTime dateTime;
 
     @Min( value = 0, message = "{Min.Humidity.data}" )

@@ -4,8 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
@@ -19,7 +17,7 @@ public class Temperature{
 
     @Id
     @NotNull( message = "{NotNull.Temperature.datetime}" )
-    @Column( name = "dateTime" )
+    @Column( name = "dateTime", unique = true )
     private LocalDateTime dateTime;
 
     @Column( name = "temperature" )
