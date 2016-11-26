@@ -4,17 +4,18 @@ import be.krivi.ucll.da.raspcast.api.config.Config;
 import be.krivi.ucll.da.raspcast.api.dto.UserData;
 import be.krivi.ucll.da.raspcast.model.core.Humidity;
 import be.krivi.ucll.da.raspcast.model.core.Temperature;
+import be.krivi.ucll.da.raspcast.model.exception.DatabaseException;
 import be.krivi.ucll.da.raspcast.model.service.RaspService;
+import org.apache.commons.lang.exception.ExceptionUtils;
 
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
-import javax.inject.Inject;
 import javax.json.JsonObject;
 import javax.ws.rs.*;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -33,21 +34,31 @@ public class Controller{
 
     @GET
     @Path( "/fetch" )
-    @Produces( "application/json" )
-    public String fetchData( @QueryParam( "data" ) String data ){
+    @Produces( "text/plain" )
+    public Response fetchData( @QueryParam( "data" ) String data ){
 
         Client client = ClientBuilder.newClient();
 
         WebTarget target = client.target( "http://localhost:8080/parser/weather" );
         JsonObject s = target.request( MediaType.APPLICATION_JSON_TYPE ).get( JsonObject.class );
 
-        if( !"t".equals( data ) )
-            service.addHumidity( Double.parseDouble( s.get( "humidity" ).toString() ) );
-        if( !"h".equals( data ) )
-            service.addTemperature( Double.parseDouble( s.get( "temperature" ).toString() ) );
-
-
-        return "Nice";
+        try{
+            if( !"t".equals( data ) )
+                service.addHumidity( Double.parseDouble( s.get( "humidity" ).toString() ) );
+            if( !"h".equals( data ) )
+                service.addTemperature( Double.parseDouble( s.get( "temperature" ).toString() ) );
+        }catch( Exception e ){
+            if( ExceptionUtils.indexOfThrowable( e, DatabaseException.class ) != -1 )
+                return Response.status( Response.Status.CONFLICT )
+                        .entity( "HTTP 409 Conflict" )
+                        .build();
+            return Response.status( Response.Status.INTERNAL_SERVER_ERROR )
+                    .entity( "HTTP 500 Internal Server Error" )
+                    .build();
+        }
+        return Response.status( Response.Status.CREATED )
+                .entity( "HTTP 201 Created" )
+                .build();
     }
 
     //****************************************************************

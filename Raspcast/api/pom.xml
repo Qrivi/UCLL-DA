@@ -19,8 +19,8 @@
 
     <properties>
         <model.version>1.0-SNAPSHOT</model.version>
-        <parser.version>1.0-SNAPSHOT</parser.version>
 
+        <commons.version>2.6</commons.version>
         <jersey.version>2.23.2</jersey.version>
 
         <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
@@ -31,6 +31,12 @@
             <groupId>be.krivi.ucll.da.raspcast</groupId>
             <artifactId>model</artifactId>
             <version>${model.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+            <version>${commons.version}</version>
         </dependency>
 
         <dependency>
