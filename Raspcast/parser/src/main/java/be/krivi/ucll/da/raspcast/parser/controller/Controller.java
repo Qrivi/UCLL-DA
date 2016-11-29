@@ -10,10 +10,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
-/**
- * Created by Jan on 17/11/2016.
- */
-
 @Stateless
 @Path( "/weather" )
 public class Controller{

@@ -2,10 +2,6 @@ package be.krivi.ucll.da.raspcast.api.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * Created by Jan on 16/11/2016.
- */
-
 @JsonIgnoreProperties( ignoreUnknown = true )
 public class UserData{
 

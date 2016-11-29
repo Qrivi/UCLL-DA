@@ -7,10 +7,6 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-/**
- * Created by Krivi on 13/10/2016.
- */
-
 @Entity
 @Table( name = "temperature" )
 public class Temperature{

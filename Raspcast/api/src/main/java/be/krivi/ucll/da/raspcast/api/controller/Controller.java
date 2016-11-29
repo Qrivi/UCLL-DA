@@ -22,10 +22,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 
-/**
- * Created by Jan on 16/11/2016.
- */
-
 @Path( "/api" )
 public class Controller{
 

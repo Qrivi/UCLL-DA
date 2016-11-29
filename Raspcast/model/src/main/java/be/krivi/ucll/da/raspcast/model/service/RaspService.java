@@ -7,10 +7,6 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
-/**
- * Created by Krivi on 16/11/2016.
- */
-
 public interface RaspService{
 
     //****************************************************************

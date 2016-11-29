@@ -9,10 +9,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-/**
- * Created by Krivi on 13/10/2016.
- */
-
 @Entity
 @Table( name = "humidity" )
 public class Humidity{

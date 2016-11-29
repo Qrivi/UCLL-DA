@@ -9,10 +9,6 @@ import javax.ejb.Stateless;
 import javax.enterprise.inject.Alternative;
 import java.io.IOException;
 
-/**
- * Created by Krivi on 16/11/2016.
- */
-
 @Stateless
 @Alternative
 public class PythonReader implements Reader{

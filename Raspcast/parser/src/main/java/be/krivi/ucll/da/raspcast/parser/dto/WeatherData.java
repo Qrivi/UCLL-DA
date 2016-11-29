@@ -3,10 +3,6 @@ package be.krivi.ucll.da.raspcast.parser.dto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Created by Krivi on 16/11/2016.
- */
-
 @JsonIgnoreProperties( ignoreUnknown = true )
 public class WeatherData{
 

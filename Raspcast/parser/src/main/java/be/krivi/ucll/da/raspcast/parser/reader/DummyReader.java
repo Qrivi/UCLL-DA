@@ -5,10 +5,6 @@ import be.krivi.ucll.da.raspcast.parser.dto.WeatherData;
 import javax.ejb.Stateless;
 import java.util.concurrent.ThreadLocalRandom;
 
-/**
- * Created by Krivi on 16/11/2016.
- */
-
 @Stateless
 public class DummyReader implements Reader{
 

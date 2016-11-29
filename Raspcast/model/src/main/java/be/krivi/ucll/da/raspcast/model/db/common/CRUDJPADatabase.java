@@ -9,10 +9,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 
-/**
- * Created by Krivi on 30/03/16.
- */
-
 public abstract class CRUDJPADatabase<ENTITY> implements CRUD<ENTITY, LocalDateTime>{
 
     private final Class<ENTITY> typeClass;

@@ -1,9 +1,5 @@
 package be.krivi.ucll.da.raspcast.model.exception;
 
-/**
- * Created by Krivi on 12/02/16.
- */
-
 public class DatabaseException extends RuntimeException{
 
     public DatabaseException(){

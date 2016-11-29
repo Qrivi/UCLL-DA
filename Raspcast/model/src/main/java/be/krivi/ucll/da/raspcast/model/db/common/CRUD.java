@@ -4,10 +4,6 @@ import be.krivi.ucll.da.raspcast.model.exception.DatabaseException;
 
 import java.util.Collection;
 
-/**
- * Created by Krivi on 21/02/16.
- */
-
 public interface CRUD<E, K>{
 
     //E getByDateTime( K id ) throws DatabaseException;

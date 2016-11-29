@@ -13,10 +13,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * Created by Krivi on 16/11/2016.
- */
-
 @Stateless
 public class RaspServiceImpl implements RaspService{
 
