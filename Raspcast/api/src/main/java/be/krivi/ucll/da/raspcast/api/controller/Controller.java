@@ -39,7 +39,7 @@ public class Controller{
 
         Client client = ClientBuilder.newClient();
 
-        WebTarget target = client.target( "http://localhost:8080/parser/weather" );
+        WebTarget target = client.target( Config.DATA_URL );
         JsonObject s = target.request( MediaType.APPLICATION_JSON_TYPE ).get( JsonObject.class );
 
         try{

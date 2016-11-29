@@ -1,8 +1,5 @@
 package be.krivi.ucll.da.raspcast.api.config;
 
-/**
- * Created by Jan on 16/11/2016.
- */
 public class Config{
 
     // Amount of JSON objects to return if no limit is specified
@@ -11,6 +8,6 @@ public class Config{
     // The first JSON object to return if no offset is specified
     public static final int DEFAULT_OFFSET = 0;
 
-    // The Reader to use when new weather data is fetched
-    public static final String READER = "DummyReader";
+    // Location from where to fetch current weather data
+    public static final String DATA_URL = "http://localhost:8080/parser/weather";
 }
