@@ -28,6 +28,9 @@ public class Controller{
     @EJB
     private RaspService service;
 
+    private DateTimeFormatter simpleDate = DateTimeFormatter.ofPattern( "yyyy-MM-dd" ),
+            extendedDate = DateTimeFormatter.ofPattern( "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS" );
+
     @GET
     @Path( "/fetch" )
     @Produces( "text/plain" )
@@ -36,13 +39,13 @@ public class Controller{
         Client client = ClientBuilder.newClient();
 
         WebTarget target = client.target( Config.DATA_URL );
-        JsonObject s = target.request( MediaType.APPLICATION_JSON_TYPE ).get( JsonObject.class );
+        JsonObject o = target.request( MediaType.APPLICATION_JSON_TYPE ).get( JsonObject.class );
 
         try{
             if( !"t".equals( data ) )
-                service.addHumidity( Double.parseDouble( s.get( "humidity" ).toString() ) );
+                service.addHumidity( Double.parseDouble( o.get( "humidity" ).toString() ) );
             if( !"h".equals( data ) )
-                service.addTemperature( Double.parseDouble( s.get( "temperature" ).toString() ) );
+                service.addTemperature( Double.parseDouble( o.get( "temperature" ).toString() ) );
         }catch( Exception e ){
             if( ExceptionUtils.indexOfThrowable( e, DatabaseException.class ) != -1 )
                 return Response.status( Response.Status.CONFLICT )
@@ -83,17 +86,15 @@ public class Controller{
     @Consumes( MediaType.APPLICATION_JSON )
     @Produces( "application/json" )
     public List<Humidity> getHumidity( UserData userData ){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd" );
 
         if( userData.getDate() != null )
-            return service.getHumidityByDate( LocalDate.parse( userData.getDate(), formatter ) );
+            return service.getHumidityByDate( LocalDate.parse( userData.getDate(), simpleDate ) );
         if( userData.getBeforeDate() != null && userData.getAfterDate() != null )
-            return service.getHumidityBetweenDates( LocalDate.parse( userData.getBeforeDate(), formatter )
-                    , LocalDate.parse( userData.getAfterDate(), formatter ) );
+            return service.getHumidityBetweenDates( LocalDate.parse( userData.getBeforeDate(), simpleDate ), LocalDate.parse( userData.getAfterDate(), simpleDate ) );
         if( userData.getBeforeDate() != null )
-            return service.getHumidityBeforeDate( LocalDate.parse( userData.getBeforeDate(), formatter ) );
+            return service.getHumidityBeforeDate( LocalDate.parse( userData.getBeforeDate(), simpleDate ) );
         if( userData.getAfterDate() != null )
-            return service.getHumidityBeforeDate( LocalDate.parse( userData.getAfterDate(), formatter ) );
+            return service.getHumidityBeforeDate( LocalDate.parse( userData.getAfterDate(), simpleDate ) );
 
         return Collections.emptyList();
     }
@@ -102,8 +103,7 @@ public class Controller{
     @Path( "/humidity" )
     @Consumes( MediaType.APPLICATION_JSON )
     public void removeHumidity( UserData userData ){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS" );
-        service.removeHumidityByDateTime( LocalDateTime.parse( userData.getDate(), formatter ) );
+        service.removeHumidityByDateTime( LocalDateTime.parse( userData.getDate(), extendedDate ) );
     }
 
     //****************************************************************
@@ -135,17 +135,15 @@ public class Controller{
     @Consumes( MediaType.APPLICATION_JSON )
     @Produces( "application/json" )
     public List<Temperature> getTemperature( UserData userData ){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd" );
 
         if( userData.getDate() != null )
-            return service.getTemperatureByDate( LocalDate.parse( userData.getDate(), formatter ) );
+            return service.getTemperatureByDate( LocalDate.parse( userData.getDate(), simpleDate ) );
         if( userData.getBeforeDate() != null && userData.getAfterDate() != null )
-            return service.getTemperatureBetweenDates( LocalDate.parse( userData.getBeforeDate(), formatter )
-                    , LocalDate.parse( userData.getAfterDate(), formatter ) );
+            return service.getTemperatureBetweenDates( LocalDate.parse( userData.getBeforeDate(), simpleDate ), LocalDate.parse( userData.getAfterDate(), simpleDate ) );
         if( userData.getBeforeDate() != null )
-            return service.getTemperatureBeforeDate( LocalDate.parse( userData.getBeforeDate(), formatter ) );
+            return service.getTemperatureBeforeDate( LocalDate.parse( userData.getBeforeDate(), simpleDate ) );
         if( userData.getAfterDate() != null )
-            return service.getTemperatureAfterDate( LocalDate.parse( userData.getAfterDate(), formatter ) );
+            return service.getTemperatureAfterDate( LocalDate.parse( userData.getAfterDate(), simpleDate ) );
 
         return Collections.emptyList();
     }
@@ -154,8 +152,7 @@ public class Controller{
     @Path( "/temperature" )
     @Consumes( MediaType.APPLICATION_JSON )
     public void removeTemperature( UserData userData ){
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern( "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS" );
-        service.removeTemperatureByDateTime( LocalDateTime.parse( userData.getDate(), formatter ) );
+        service.removeTemperatureByDateTime( LocalDateTime.parse( userData.getDate(), extendedDate ) );
     }
 
     //****************************************************************

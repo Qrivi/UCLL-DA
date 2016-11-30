@@ -10,9 +10,10 @@
         <class>be.krivi.ucll.da.raspcast.model.core.Humidity</class>
         <class>be.krivi.ucll.da.raspcast.model.core.Temperature</class>
 
+        <!-- These are required on first launch in order to create the correct tables in the database
         <properties>
-            <property name="javax.persistence.schema-generation.database.action" value="update"/>
-        </properties>
+            <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
+        </properties> -->
     </persistence-unit>
 
 </persistence>
