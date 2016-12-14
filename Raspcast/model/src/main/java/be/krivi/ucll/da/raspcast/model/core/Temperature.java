@@ -1,11 +1,14 @@
 package be.krivi.ucll.da.raspcast.model.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 @Entity
 @Table( name = "temperature" )
+@JsonIgnoreProperties( {"id"} )
 public class Temperature{
 
     @Id

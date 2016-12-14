@@ -1,5 +1,7 @@
 package be.krivi.ucll.da.raspcast.model.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -8,12 +10,13 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table( name = "humidity" )
+@JsonIgnoreProperties( {"id"} )
 public class Humidity{
 
     @Id
     @GeneratedValue
     private Integer id;
-    
+
     @NotNull( message = "{NotNull.Humidity.datetime}" )
     @Column( name = "dateTime", unique = true )
     private LocalDateTime dateTime;

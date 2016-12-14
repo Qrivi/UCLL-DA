@@ -22,11 +22,18 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
 
         <junit.version>4.12</junit.version>
+        <jackson-databind.version>2.8.2</jackson-databind.version>
 
         <maven-compiler.version>3.5.1</maven-compiler.version>
     </properties>
 
     <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
+
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>

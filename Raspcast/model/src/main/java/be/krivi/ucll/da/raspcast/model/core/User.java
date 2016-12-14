@@ -1,5 +1,7 @@
 package be.krivi.ucll.da.raspcast.model.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.validator.constraints.NotBlank;
 import org.mindrot.jbcrypt.BCrypt;
 
@@ -8,6 +10,7 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table( name = "user" )
+@JsonIgnoreProperties( {"id"} )
 public class User{
 
     @Id
