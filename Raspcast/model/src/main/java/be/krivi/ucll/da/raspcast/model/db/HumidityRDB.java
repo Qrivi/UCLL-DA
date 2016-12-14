@@ -18,7 +18,7 @@ public class HumidityRDB extends CRUDJPADatabase<Humidity> implements HumidityDB
     @Override
     public Humidity getByDateTime( LocalDateTime dateTime ) throws DatabaseException{
         try{
-            return manager.createQuery( "SELECT n FROM Humidity WHERE n.dateTime = :dateTime", Humidity.class )
+            return manager.createQuery( "SELECT h FROM Humidity h WHERE h.dateTime = :dateTime", Humidity.class )
                     .setParameter( "dateTime", dateTime )
                     .getSingleResult();
         }catch( NoResultException e ){

@@ -1,5 +1,6 @@
 package be.krivi.ucll.da.raspcast.model.core;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -37,6 +38,15 @@ public class Humidity{
     public Humidity( double data, LocalDateTime dateTime ){
         setDateTime( dateTime );
         setData( data );
+    }
+
+    @JsonIgnore
+    public Integer getId(){
+        return id;
+    }
+
+    public void setId( Integer id ){
+        this.id = id;
     }
 
     public LocalDateTime getDateTime(){

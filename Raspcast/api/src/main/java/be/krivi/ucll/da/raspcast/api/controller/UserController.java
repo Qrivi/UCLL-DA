@@ -8,9 +8,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 
 import javax.ejb.EJB;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -23,7 +20,6 @@ import java.security.Key;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.logging.Logger;
 
 import static javax.ws.rs.core.HttpHeaders.AUTHORIZATION;
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
@@ -41,14 +37,8 @@ public class UserController{
     @EJB
     private RaspService service;
 
-    @Inject
-    private Logger logger;
-
-    @Inject
+    @EJB
     private KeyGenerator keyGenerator;
-
-    @PersistenceContext
-    private EntityManager em;
 
     @POST
     @Path( "/login" )
@@ -66,6 +56,7 @@ public class UserController{
         String token = issueToken( userData.getUsername() );
         return Response.ok()
                 .header( AUTHORIZATION, "Bearer " + token )
+                .entity( "HTTP 200 OK" )
                 .build();
     }
 
@@ -78,12 +69,19 @@ public class UserController{
                 .setExpiration( toDate( LocalDateTime.now().plusMinutes( 15L ) ) )
                 .signWith( SignatureAlgorithm.HS512, key )
                 .compact();
-        logger.info( "#### generating token for a key : " + jwtToken + " - " + key );
         return jwtToken;
 
     }
 
     private Date toDate( LocalDateTime localDateTime ){
         return Date.from( localDateTime.atZone( ZoneId.systemDefault() ).toInstant() );
+    }
+
+    @POST
+    @Path( "/add" )
+    @Consumes("application/json")
+    @Produces("plain/text")
+    public void addUser(UserData userData) {
+       service.addUser( userData.getUsername(), userData.getPassword() );
     }
 }

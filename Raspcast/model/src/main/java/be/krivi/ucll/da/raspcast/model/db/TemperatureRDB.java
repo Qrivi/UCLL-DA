@@ -18,7 +18,7 @@ public class TemperatureRDB extends CRUDJPADatabase<Temperature> implements Temp
     @Override
     public Temperature getByDateTime( LocalDateTime dateTime ) throws DatabaseException{
         try{
-            return manager.createQuery( "SELECT n FROM Temperature WHERE n.dateTime = :dateTime", Temperature.class )
+            return manager.createQuery( "SELECT t FROM Temperature t WHERE t.dateTime = :dateTime", Temperature.class )
                     .setParameter( "dateTime", dateTime )
                     .getSingleResult();
         }catch( NoResultException e ){

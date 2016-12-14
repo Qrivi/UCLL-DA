@@ -17,7 +17,7 @@ public class UserRDB extends CRUDJPADatabase<User> implements UserDB{
     @Override
     public User getByUserName( String userName ) throws DatabaseException{
         try{
-            return manager.createQuery( "SELECT n FROM User WHERE n.userName = :userName", User.class )
+            return manager.createQuery( "SELECT u FROM User u WHERE u.userName = :userName", User.class )
                     .setParameter( "userName", userName )
                     .getSingleResult();
         }catch( NoResultException e ){

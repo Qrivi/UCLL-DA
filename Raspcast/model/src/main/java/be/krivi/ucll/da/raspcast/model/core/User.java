@@ -39,6 +39,7 @@ public class User{
         setStatus( UserStatus.ACTIVE );
     }
 
+    @JsonIgnore
     public Integer getId(){
         return id;
     }

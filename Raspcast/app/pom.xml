@@ -22,7 +22,7 @@
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
 
         <junit.version>4.12</junit.version>
-        <jackson-databind.version>2.8.2</jackson-databind.version>
+        <jackson-databind.version>2.8.5</jackson-databind.version>
 
         <maven-compiler.version>3.5.1</maven-compiler.version>
     </properties>
