@@ -1,9 +1,6 @@
 package be.krivi.ucll.da.raspcast.model.core;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
@@ -14,6 +11,9 @@ import java.time.LocalDateTime;
 public class Humidity{
 
     @Id
+    @GeneratedValue
+    private Integer id;
+    
     @NotNull( message = "{NotNull.Humidity.datetime}" )
     @Column( name = "dateTime", unique = true )
     private LocalDateTime dateTime;
