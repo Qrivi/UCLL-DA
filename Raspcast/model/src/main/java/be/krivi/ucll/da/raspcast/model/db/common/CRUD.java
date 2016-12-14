@@ -6,8 +6,6 @@ import java.util.Collection;
 
 public interface CRUD<E, K>{
 
-    //E getByDateTime( K id ) throws DatabaseException;
-
     E getByDateTime( K dateTime ) throws DatabaseException;
 
     Collection<E> getAll() throws DatabaseException;

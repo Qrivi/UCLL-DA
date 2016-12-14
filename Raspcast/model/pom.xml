@@ -21,6 +21,8 @@
         <hibernate.version>5.2.4.Final</hibernate.version>
         <mysql-connector.version>6.0.5</mysql-connector.version>
         <javaee-web-api.version>7.0</javaee-web-api.version>
+
+        <jbcrypt.version>0.3m</jbcrypt.version>
     </properties>
 
     <dependencies>
@@ -46,6 +48,13 @@
             <artifactId>javaee-web-api</artifactId>
             <version>${javaee-web-api.version}</version>
         </dependency>
+
+        <dependency>
+            <groupId>org.mindrot</groupId>
+            <artifactId>jbcrypt</artifactId>
+            <version>${jbcrypt.version}</version>
+        </dependency>
+
     </dependencies>
 
 </project>
