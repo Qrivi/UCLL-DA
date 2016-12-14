@@ -22,6 +22,7 @@
 
         <commons.version>2.6</commons.version>
         <jersey.version>2.23.2</jersey.version>
+        <jjwt.version>0.7.0</jjwt.version>
 
         <maven-war-plugin.version>3.0.0</maven-war-plugin.version>
     </properties>
@@ -53,6 +54,12 @@
             <groupId>org.glassfish.jersey.core</groupId>
             <artifactId>jersey-server</artifactId>
             <version>${jersey.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+            <version>${jjwt.version}</version>
         </dependency>
     </dependencies>
 

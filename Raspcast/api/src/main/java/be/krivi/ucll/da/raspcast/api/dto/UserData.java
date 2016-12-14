@@ -5,34 +5,25 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 @JsonIgnoreProperties( ignoreUnknown = true )
 public class UserData{
 
-    private String beforeDate;
-    private String afterDate;
-    private String date;
+    private String username;
+    private String password;
 
     public UserData(){
     }
 
-    public String getBeforeDate(){
-        return beforeDate;
+    public String getUsername(){
+        return username;
     }
 
-    public void setBeforeDate( String beforeDate ){
-        this.beforeDate = beforeDate;
+    public void setUsername( String username ){
+        this.username = username;
     }
 
-    public String getAfterDate(){
-        return afterDate;
+    public String getPassword(){
+        return password;
     }
 
-    public void setAfterDate( String afterDate ){
-        this.afterDate = afterDate;
-    }
-
-    public String getDate(){
-        return date;
-    }
-
-    public void setDate( String date ){
-        this.date = date;
+    public void setPassword( String password ){
+        this.password = password;
     }
 }
