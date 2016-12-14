@@ -6,14 +6,14 @@
 
     <servlet>
         <servlet-name>RaspcastAPI</servlet-name>
+
         <servlet-class>
             org.glassfish.jersey.servlet.ServletContainer
         </servlet-class>
+
         <init-param>
-            <param-name>
-                jersey.config.server.provider.packages
-            </param-name>
-            <param-value>be.krivi.ucll.da.raspcast.api.controller</param-value>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>be.krivi.ucll.da.raspcast.api</param-value>
         </init-param>
     </servlet>
 

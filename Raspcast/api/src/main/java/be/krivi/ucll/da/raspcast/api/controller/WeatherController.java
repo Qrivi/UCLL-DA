@@ -2,7 +2,7 @@ package be.krivi.ucll.da.raspcast.api.controller;
 
 import be.krivi.ucll.da.raspcast.api.config.Config;
 import be.krivi.ucll.da.raspcast.api.dto.WeatherData;
-import be.krivi.ucll.da.raspcast.api.filter.JWTTokenNeeded;
+import be.krivi.ucll.da.raspcast.api.filter.JWTSecured;
 import be.krivi.ucll.da.raspcast.model.core.Humidity;
 import be.krivi.ucll.da.raspcast.model.core.Temperature;
 import be.krivi.ucll.da.raspcast.model.exception.DatabaseException;
@@ -23,6 +23,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 
+@JWTSecured
 @Path( "/api" )
 public class WeatherController{
 
@@ -30,7 +31,7 @@ public class WeatherController{
     private RaspService service;
 
     private DateTimeFormatter simpleDate = DateTimeFormatter.ofPattern( "yyyy-MM-dd" ),
-            extendedDate = DateTimeFormatter.ofPattern( "yyyy-MM-dd'T'HH:mm:ss.SSSSSSSSS" );
+            extendedDate = DateTimeFormatter.ofPattern( "yyyy-MM-dd'T'HH:mm:ss" );
 
     @GET
     @Path( "/fetch" )
@@ -67,7 +68,6 @@ public class WeatherController{
 
     @GET
     @Path( "/humidity" )
-    @JWTTokenNeeded //TODO doesn't seem to work yet
     @Produces( "application/json" )
     public List<Humidity> getHumidity( @QueryParam( "limit" ) @DefaultValue( "-1" ) int limit,
                                        @QueryParam( "offset" ) @DefaultValue( "-1" ) int offset ){
@@ -89,6 +89,8 @@ public class WeatherController{
     @Produces( "application/json" )
     public List<Humidity> getHumidity( WeatherData weatherData ){
 
+        // TODO check ifs in multiple scenarios
+
         if( weatherData.getDate() != null )
             return service.getHumidityByDate( LocalDate.parse( weatherData.getDate(), simpleDate ) );
         if( weatherData.getBeforeDate() != null && weatherData.getAfterDate() != null )
@@ -101,12 +103,14 @@ public class WeatherController{
         return Collections.emptyList();
     }
 
-    @DELETE
+    @DELETE //TODO does not seem to work with delete method
     @Path( "/humidity" )
-    @Consumes( MediaType.APPLICATION_JSON )
+    @Consumes( "application/json" )
     public void removeHumidity( WeatherData weatherData ){
         service.removeHumidityByDateTime( LocalDateTime.parse( weatherData.getDate(), extendedDate ) );
     }
+
+    // TODO delete by id
 
     //****************************************************************
     // region endregion
@@ -150,12 +154,14 @@ public class WeatherController{
         return Collections.emptyList();
     }
 
-    @DELETE
+    @DELETE //TODO does not seem to work with delete method
     @Path( "/temperature" )
     @Consumes( "application/json" )
     public void removeTemperature( WeatherData weatherData ){
         service.removeTemperatureByDateTime( LocalDateTime.parse( weatherData.getDate(), extendedDate ) );
     }
+
+    // TODO delete by id
 
     //****************************************************************
     // region endregion
