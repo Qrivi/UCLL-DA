@@ -5,16 +5,15 @@ import be.krivi.ucll.da.raspcast.model.exception.DatabaseException;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public abstract class CRUDJPADatabase<ENTITY> implements CRUD<ENTITY, LocalDateTime>{
+public abstract class CRUDJPADatabase<ENTITY> implements CRUD<ENTITY, Integer>{
 
     private final Class<ENTITY> typeClass;
 
     @PersistenceContext( unitName = "raspcast-persist" )
-    private EntityManager manager;
+    protected EntityManager manager;
 
     public CRUDJPADatabase( Class<ENTITY> typeClass ){
         this.typeClass = typeClass;
@@ -51,11 +50,11 @@ public abstract class CRUDJPADatabase<ENTITY> implements CRUD<ENTITY, LocalDateT
     }
 
     @Override
-    public ENTITY getByDateTime( LocalDateTime dateTime ) throws DatabaseException{
+    public ENTITY getById( Integer id ) throws DatabaseException{
         try{
-            return manager.find( typeClass, dateTime );
+            return manager.find( typeClass, id );
         }catch( Exception e ){
-            throw new DatabaseException( "Fetching object from database failed: " + dateTime, e );
+            throw new DatabaseException( "Fetching object from database failed: " + id, e );
         }
     }
 

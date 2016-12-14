@@ -2,8 +2,10 @@ package be.krivi.ucll.da.raspcast.model.service;
 
 import be.krivi.ucll.da.raspcast.model.core.Humidity;
 import be.krivi.ucll.da.raspcast.model.core.Temperature;
+import be.krivi.ucll.da.raspcast.model.core.User;
 import be.krivi.ucll.da.raspcast.model.db.HumidityDB;
 import be.krivi.ucll.da.raspcast.model.db.TemperatureDB;
+import be.krivi.ucll.da.raspcast.model.db.UserDB;
 
 import javax.ejb.Stateless;
 import javax.inject.Inject;
@@ -21,6 +23,9 @@ public class RaspServiceImpl implements RaspService{
 
     @Inject
     private TemperatureDB temperatureDB;
+
+    @Inject
+    private UserDB userDB;
 
     //****************************************************************
     // region Humidity
@@ -168,6 +173,34 @@ public class RaspServiceImpl implements RaspService{
                 .filter( ( n ) -> n.getDateTime().toLocalDate().isAfter( after ) )
                 .filter( ( n ) -> n.getDateTime().toLocalDate().isBefore( before ) )
                 .collect( Collectors.toList() );
+    }
+
+    //****************************************************************
+    // endregion
+    //****************************************************************
+
+    //****************************************************************
+    // region User
+    //****************************************************************
+
+    @Override
+    public void addUser( String userName, String plainPassword ){
+        userDB.add( new User( userName, plainPassword ) );
+    }
+
+    @Override
+    public User getUserByUserName( String userName ){
+        return userDB.getByUserName( userName );
+    }
+
+    @Override
+    public void updateUser( User user ){
+        userDB.update( user );
+    }
+
+    @Override
+    public void removeUser( User user ){
+        userDB.delete( user );
     }
 
     //****************************************************************

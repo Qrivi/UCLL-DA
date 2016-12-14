@@ -2,6 +2,7 @@ package be.krivi.ucll.da.raspcast.model.service;
 
 import be.krivi.ucll.da.raspcast.model.core.Humidity;
 import be.krivi.ucll.da.raspcast.model.core.Temperature;
+import be.krivi.ucll.da.raspcast.model.core.User;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -56,6 +57,22 @@ public interface RaspService{
     List<Temperature> getTemperatureAfterDate( LocalDate date );
 
     List<Temperature> getTemperatureBetweenDates( LocalDate after, LocalDate before );
+
+    //****************************************************************
+    // endregion
+    //****************************************************************
+
+    //****************************************************************
+    // region User
+    //****************************************************************
+
+    void addUser( String userName, String plainPassword );
+
+    User getUserByUserName( String userName );
+
+    void updateUser( User user );
+
+    void removeUser( User user );
 
     //****************************************************************
     // endregion

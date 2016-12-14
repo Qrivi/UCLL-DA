@@ -1,9 +1,6 @@
 package be.krivi.ucll.da.raspcast.model.core;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
@@ -12,6 +9,9 @@ import java.time.LocalDateTime;
 public class Temperature{
 
     @Id
+    @GeneratedValue
+    private Integer id;
+
     @NotNull( message = "{NotNull.Temperature.datetime}" )
     @Column( name = "dateTime", unique = true )
     private LocalDateTime dateTime;
@@ -30,6 +30,14 @@ public class Temperature{
     public Temperature( double data, LocalDateTime dateTime ){
         setDateTime( dateTime );
         setData( data );
+    }
+
+    public Integer getId(){
+        return id;
+    }
+
+    public void setId( Integer id ){
+        this.id = id;
     }
 
     public LocalDateTime getDateTime(){
