@@ -8,6 +8,7 @@ import be.krivi.ucll.da.raspcast.model.core.Temperature;
 import be.krivi.ucll.da.raspcast.model.exception.DatabaseException;
 import be.krivi.ucll.da.raspcast.model.service.RaspService;
 import org.apache.commons.lang.exception.ExceptionUtils;
+import org.glassfish.jersey.client.authentication.HttpAuthenticationFeature;
 
 import javax.ejb.EJB;
 import javax.json.JsonObject;
@@ -39,6 +40,9 @@ public class WeatherController{
     public Response fetchData( @QueryParam( "data" ) String data ){
 
         Client client = ClientBuilder.newClient();
+        HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic(Config.AUTH_USER, Config.AUTH_PASS);
+
+        client.register( feature );
 
         WebTarget target = client.target( Config.DATA_URL );
         JsonObject o = target.request( MediaType.APPLICATION_JSON_TYPE ).get( JsonObject.class );
