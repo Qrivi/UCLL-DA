@@ -98,7 +98,7 @@ public class WeatherController{
         if( weatherData.getBeforeDate() != null )
             return service.getHumidityBeforeDate( LocalDate.parse( weatherData.getBeforeDate(), simpleDate ) );
         if( weatherData.getAfterDate() != null )
-            return service.getHumidityBeforeDate( LocalDate.parse( weatherData.getAfterDate(), simpleDate ) );
+            return service.getHumidityAfterDate( LocalDate.parse( weatherData.getAfterDate(), simpleDate ) );
 
         return Collections.emptyList();
     }
