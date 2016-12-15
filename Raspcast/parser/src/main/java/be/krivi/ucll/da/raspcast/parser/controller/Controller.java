@@ -5,10 +5,8 @@ import be.krivi.ucll.da.raspcast.parser.exception.ReadException;
 import be.krivi.ucll.da.raspcast.parser.filter.BasicAuthSecured;
 import be.krivi.ucll.da.raspcast.parser.reader.Reader;
 
-import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.inject.Inject;
-import javax.persistence.Basic;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
@@ -18,7 +16,7 @@ import javax.ws.rs.Produces;
 @Path( "/weather" )
 public class Controller{
 
-    @EJB
+    @Inject
     private Reader reader;
 
     @GET
