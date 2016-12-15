@@ -89,7 +89,7 @@ public class WeatherController{
     @Produces( "application/json" )
     public List<Humidity> getHumidity( WeatherData weatherData ){
 
-        // TODO check ifs in multiple scenarios
+        // TODO test ifs in multiple scenarios
 
         if( weatherData.getDate() != null )
             return service.getHumidityByDate( LocalDate.parse( weatherData.getDate(), simpleDate ) );
@@ -103,14 +103,19 @@ public class WeatherController{
         return Collections.emptyList();
     }
 
-    @DELETE //TODO does not seem to work with delete method
+    @DELETE //TODO Does not work with entity body
     @Path( "/humidity" )
     @Consumes( "application/json" )
     public void removeHumidity( WeatherData weatherData ){
         service.removeHumidityByDateTime( LocalDateTime.parse( weatherData.getDate(), extendedDate ) );
     }
 
-    // TODO delete by id
+    @DELETE
+    @Path( "/humidity/{id}" )
+    public void removeHumidity( @PathParam( "id" ) int id ){
+        service.removeHumidityById( id );
+    }
+
 
     //****************************************************************
     // region endregion
@@ -154,14 +159,18 @@ public class WeatherController{
         return Collections.emptyList();
     }
 
-    @DELETE //TODO does not seem to work with delete method
+    @DELETE //TODO Does not work with entity body
     @Path( "/temperature" )
     @Consumes( "application/json" )
     public void removeTemperature( WeatherData weatherData ){
         service.removeTemperatureByDateTime( LocalDateTime.parse( weatherData.getDate(), extendedDate ) );
     }
 
-    // TODO delete by id
+    @DELETE
+    @Path( "/temperature/{id}" )
+    public void removeTemperature( @PathParam( "id" ) int id ){
+        service.removeHumidityById( id );
+    }
 
     //****************************************************************
     // region endregion

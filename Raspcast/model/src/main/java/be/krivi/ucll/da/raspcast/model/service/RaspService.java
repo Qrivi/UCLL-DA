@@ -24,6 +24,8 @@ public interface RaspService{
 
     void removeHumidityByDateTime( LocalDateTime date );
 
+    void removeHumidityById( Integer id );
+
     List<Humidity> getHumidityByDate( LocalDate date );
 
     List<Humidity> getHumidityBeforeDate( LocalDate date );
@@ -49,6 +51,8 @@ public interface RaspService{
     Temperature getTemperatureByDateTime( LocalDateTime date );
 
     void removeTemperatureByDateTime( LocalDateTime date );
+
+    void removeTemperatureById( Integer id );
 
     List<Temperature> getTemperatureByDate( LocalDate date );
 

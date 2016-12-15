@@ -67,6 +67,11 @@ public class RaspServiceImpl implements RaspService{
     }
 
     @Override
+    public void removeHumidityById( Integer id ){
+        humidityDB.delete( humidityDB.getById( id ) );
+    }
+
+    @Override
     public List<Humidity> getHumidityByDate( LocalDate date ){
         return humidityDB.getAll()
                 .stream()
@@ -140,6 +145,11 @@ public class RaspServiceImpl implements RaspService{
     @Override
     public void removeTemperatureByDateTime( LocalDateTime dateTime ){
         temperatureDB.delete( temperatureDB.getByDateTime( dateTime ) );
+    }
+
+    @Override
+    public void removeTemperatureById( Integer id ){
+        temperatureDB.delete( temperatureDB.getById( id ) );
     }
 
     @Override
