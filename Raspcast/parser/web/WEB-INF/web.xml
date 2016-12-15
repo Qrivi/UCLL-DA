@@ -13,7 +13,7 @@
             <param-name>
                 jersey.config.server.provider.packages
             </param-name>
-            <param-value>be.krivi.ucll.da.raspcast.parser.controller</param-value>
+            <param-value>be.krivi.ucll.da.raspcast.parser</param-value>
         </init-param>
     </servlet>
 

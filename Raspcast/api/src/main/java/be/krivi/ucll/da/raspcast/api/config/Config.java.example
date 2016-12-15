@@ -10,4 +10,10 @@ public class Config{
 
     // Location from where to fetch current weather data
     public static final String DATA_URL = "http://localhost:8080/parser/weather";
+
+    // Username for the data parser's Basic Authentication
+    public static final String AUTH_USER = "RaspcastUser";
+
+    // Password for the data parser's Basic Authentication
+    public static final String AUTH_PASS = "P4sSw0rD";
 }

@@ -2,5 +2,12 @@ package be.krivi.ucll.da.raspcast.parser.config;
 
 public class Config{
 
+    // Path of the Python script to fetch current weather data
     public static final String PYTHON_PATH = "/projects/readDHT22.py";
+
+    // Username for Basic Authentication
+    public static final String AUTH_USER = "RaspcastUser";
+
+    // Password for Basic Authentication
+    public static final String AUTH_PASS = "P4sSw0rD";
 }
