@@ -16,6 +16,8 @@ public interface RaspService{
 
     void addHumidity( double data );
 
+    Humidity getHumidityById( int id );
+
     List<Humidity> getHumidity();
 
     List<Humidity> getHumidity( int offset, int limit );
@@ -43,6 +45,8 @@ public interface RaspService{
     //****************************************************************
 
     void addTemperature( double data );
+
+    Temperature getTemperatureById( int id );
 
     List<Temperature> getTemperature();
 

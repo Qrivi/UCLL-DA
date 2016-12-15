@@ -32,7 +32,7 @@ public class WeatherController{
     private RaspService service;
 
     private DateTimeFormatter simpleDate = DateTimeFormatter.ofPattern( "yyyy-MM-dd" ),
-            extendedDate = DateTimeFormatter.ofPattern( "yyyy-MM-dd'T'HH:mm:ss" );
+            extendedDate = DateTimeFormatter.ofPattern( "yyyy-MM-dd'T'HH:mm:ss.SSS" );
 
     @GET
     @Path( "/fetch" )
@@ -40,7 +40,7 @@ public class WeatherController{
     public Response fetchData( @QueryParam( "data" ) String data ){
 
         Client client = ClientBuilder.newClient();
-        HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic(Config.AUTH_USER, Config.AUTH_PASS);
+        HttpAuthenticationFeature feature = HttpAuthenticationFeature.basic( Config.AUTH_USER, Config.AUTH_PASS );
 
         client.register( feature );
 
@@ -107,6 +107,13 @@ public class WeatherController{
         return Collections.emptyList();
     }
 
+    @GET
+    @Path( "/humidity/{id}" )
+    @Produces( "application/json" )
+    public Humidity getHumidity( @PathParam( "id" ) int id ){
+        return service.getHumidityById( id );
+    }
+
     @DELETE //TODO Does not work with entity body
     @Path( "/humidity" )
     @Consumes( "application/json" )
@@ -161,6 +168,13 @@ public class WeatherController{
             return service.getTemperatureAfterDate( LocalDate.parse( weatherData.getAfterDate(), simpleDate ) );
 
         return Collections.emptyList();
+    }
+
+    @GET
+    @Path( "/temperature/{id}" )
+    @Produces( "application/json" )
+    public Temperature getTemperature( @PathParam( "id" ) int id ){
+        return service.getTemperatureById( id );
     }
 
     @DELETE //TODO Does not work with entity body

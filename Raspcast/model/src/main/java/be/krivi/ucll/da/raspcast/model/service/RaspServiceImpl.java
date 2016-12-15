@@ -37,6 +37,11 @@ public class RaspServiceImpl implements RaspService{
     }
 
     @Override
+    public Humidity getHumidityById( int id ){
+        return humidityDB.getById( id );
+    }
+
+    @Override
     public List<Humidity> getHumidity(){
         return new LinkedList<>( humidityDB.getAll() );
     }
@@ -115,6 +120,11 @@ public class RaspServiceImpl implements RaspService{
     @Override
     public void addTemperature( double data ){
         temperatureDB.add( new Temperature( data ) );
+    }
+
+    @Override
+    public Temperature getTemperatureById( int id ){
+        return temperatureDB.getById( id );
     }
 
     @Override
