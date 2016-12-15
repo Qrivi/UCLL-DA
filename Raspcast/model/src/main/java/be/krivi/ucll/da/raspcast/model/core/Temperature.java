@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table( name = "temperature" )
-@JsonIgnoreProperties( {"id"} )
 public class Temperature{
 
     @Id

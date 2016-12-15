@@ -11,7 +11,6 @@ import java.time.LocalDateTime;
 
 @Entity
 @Table( name = "humidity" )
-@JsonIgnoreProperties( {"id"} )
 public class Humidity{
 
     @Id
