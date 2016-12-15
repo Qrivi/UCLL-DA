@@ -5,6 +5,11 @@ import javax.persistence.Converter;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 
+/*  **************************************************************
+         THIS CONVERTER IS NOT USED ANYMORE, MIGHT NOT WORK
+        org.hibernate.hibernate-java8 supports LocalDateTime
+    ************************************************************** */
+
 @Converter( autoApply = true )
 public class LocalDateTimeAttributeConverter implements AttributeConverter<LocalDateTime, Timestamp>{
 
