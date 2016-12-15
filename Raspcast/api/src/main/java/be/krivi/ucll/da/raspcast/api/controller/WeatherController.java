@@ -93,12 +93,10 @@ public class WeatherController{
     @Produces( "application/json" )
     public List<Humidity> getHumidity( WeatherData weatherData ){
 
-        // TODO test ifs in multiple scenarios
-
         if( weatherData.getDate() != null )
             return service.getHumidityByDate( LocalDate.parse( weatherData.getDate(), simpleDate ) );
         if( weatherData.getBeforeDate() != null && weatherData.getAfterDate() != null )
-            return service.getHumidityBetweenDates( LocalDate.parse( weatherData.getBeforeDate(), simpleDate ), LocalDate.parse( weatherData.getAfterDate(), simpleDate ) );
+            return service.getHumidityBetweenDates( LocalDate.parse( weatherData.getAfterDate(), simpleDate ), LocalDate.parse( weatherData.getBeforeDate(), simpleDate )  );
         if( weatherData.getBeforeDate() != null )
             return service.getHumidityBeforeDate( LocalDate.parse( weatherData.getBeforeDate(), simpleDate ) );
         if( weatherData.getAfterDate() != null )
@@ -161,7 +159,7 @@ public class WeatherController{
         if( weatherData.getDate() != null )
             return service.getTemperatureByDate( LocalDate.parse( weatherData.getDate(), simpleDate ) );
         if( weatherData.getBeforeDate() != null && weatherData.getAfterDate() != null )
-            return service.getTemperatureBetweenDates( LocalDate.parse( weatherData.getBeforeDate(), simpleDate ), LocalDate.parse( weatherData.getAfterDate(), simpleDate ) );
+            return service.getTemperatureBetweenDates( LocalDate.parse( weatherData.getAfterDate(), simpleDate ), LocalDate.parse( weatherData.getBeforeDate(), simpleDate ) );
         if( weatherData.getBeforeDate() != null )
             return service.getTemperatureBeforeDate( LocalDate.parse( weatherData.getBeforeDate(), simpleDate ) );
         if( weatherData.getAfterDate() != null )
