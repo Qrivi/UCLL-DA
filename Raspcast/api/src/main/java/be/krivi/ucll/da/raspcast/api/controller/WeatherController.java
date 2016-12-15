@@ -173,7 +173,7 @@ public class WeatherController{
     @DELETE
     @Path( "/temperature/{id}" )
     public void removeTemperature( @PathParam( "id" ) int id ){
-        service.removeHumidityById( id );
+        service.removeTemperatureById( id );
     }
 
     //****************************************************************
