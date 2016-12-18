@@ -11,6 +11,12 @@
 
 
               https://github.com/Qrivi/UCLL-DA/tree/master/Raspcast
+
+
+
+Dit project bestaat uit twee root modules:
+ - "parser" runt op de Raspberry Pi en verwerkt lowkey de sensorgegenereerde data
+ - "app", met eronder "model" en "api" verwerken de data van "parser" in een RESTful JSON API
      
 
 /* -----
