@@ -2,7 +2,6 @@ package be.krivi.ucll.da.raspcast.parser.filter;
 
 
 import be.krivi.ucll.da.raspcast.parser.config.Config;
-import com.sun.xml.internal.messaging.saaj.util.Base64;
 
 import javax.annotation.Priority;
 import javax.ws.rs.Priorities;
@@ -15,6 +14,7 @@ import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
+import java.util.Base64;
 
 @Provider
 @BasicAuthSecured
@@ -30,7 +30,7 @@ public class BasicAuthSecuredFilter implements ContainerRequestFilter, Container
             String authorizationHeader = requestContext.getHeaderString( HttpHeaders.AUTHORIZATION );
             String base64 = authorizationHeader.substring( "Basic".length() ).trim();
 
-            if( !base64.equals( new String( new Base64().encode( ( Config.AUTH_USER + ":" + Config.AUTH_PASS ).getBytes() ) ) ) )
+            if( !base64.equals( Base64.getEncoder().encodeToString( ( Config.AUTH_USER + ":" + Config.AUTH_PASS ).getBytes() ) ) )
                 throw new WebApplicationException();
 
         }catch( Exception e ){
